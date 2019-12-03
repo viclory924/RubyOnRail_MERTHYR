@@ -1,0 +1,10 @@
+$("<%=j render(:partial => 'pages/business', :collection => @businesses) %>")
+  .appendTo($("#infinite-list"));
+
+Foundation.reInit('equalizer');
+
+var pageNum = parseInt(<%= @businesses.current_page %>);
+var totalPages   = parseInt(<%= @businesses.num_pages %>);
+if(pageNum >= totalPages){ 
+  window.doPagination = false;
+}

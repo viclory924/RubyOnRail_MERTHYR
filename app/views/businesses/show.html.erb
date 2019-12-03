@@ -1,0 +1,152 @@
+<div class="content">
+  <!-- content HEADER -->
+  <!-- ========================================================= -->
+  <div class="content-header">
+    <!-- leftside content header -->
+    <div class="leftside-content-header">
+      <ul class="breadcrumbs">
+        <li><i class="fa fa-columns" aria-hidden="true"></i><a href="#">Businesses</a></li>
+        <li><a>Show</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="row animated fadeInRight">
+    <div class="col-sm-12">
+      <% unless notice.blank? %>
+        <p id="notice" class="alert alert-success"><%= notice %></p>
+      <% end %>
+      <div class="panel">
+        <div class="panel-content">
+          <div class="table-responsive">            
+            <p>
+              <%- if @business.user? -%>
+            <p>
+              <b>User:</b>
+              <%= @business.user.email %>
+            </p>
+          <%- else -%>
+            <div class="row">
+              <div class="well col-lg-6">
+                <%= form_tag invite_business_path(@business), class: 'form-horizontal' do -%>
+                  <div class='form-group'>
+                    <div class='control-label col-lg-2'>
+                      <%= label_tag :email, 'Email' -%>
+                    </div>
+                    <div class="col-lg-10">
+                      <%= text_field_tag :email, nil, { class: 'form-control col-lg-3' } -%>
+                    </div>
+                  </div>
+                  <div class='form-group'>
+                    <div class='control-label col-lg-2'>
+                      <%= label_tag :email, '' -%>
+                    </div>
+                    <div class="col-lg-10">
+                      <%= submit_tag 'Invite', class: 'btn btn-primary btn-sm' -%>
+                    </div>
+                  </div>
+                <%- end -%>
+              </div>
+            </div>
+          <%- end -%>
+
+          <p>
+            <b>Name:</b>
+            <%= @business.name %>
+          </p>
+
+          <p>
+            <b>Category:</b>
+            <%= @business.category %>
+          </p>
+
+          <p>
+            <b>Contact:</b>
+            <%= @business.contact %>
+          </p>
+
+          <p>
+            <b>Address:</b>
+            <%= @business.address %>
+          </p>
+
+          <p>
+            <b>Town:</b>
+            <%= @business.town %>
+          </p>
+
+          <p>
+            <b>Postcode:</b>
+            <%= @business.postcode %>
+          </p>
+
+          <p>
+            <b>Telephone:</b>
+            <%= @business.telephone %>
+          </p>
+
+          <p>
+            <b>Website:</b>
+            <%= @business.website %>
+          </p>
+
+          <p>
+            <b>Email:</b>
+            <%= @business.email %>
+          </p>
+
+          <p>
+            <b>Twitter:</b>
+            <%= @business.twitter %>
+          </p>
+
+          <p>
+            <b>Facebook:</b>
+            <%= @business.facebook %>
+          </p>
+
+          <p>
+            <b>Services:</b>
+            <%= @business.services %>
+          </p>
+
+          <p>
+            <b>Profile:</b>
+            <%=sanitize @business.profile %>
+          </p>
+
+          <p>
+            <b>Photo:</b>
+            <%= image_tag(@business.photo_url(:admin_thumb)) if @business.photo.present? %>
+          </p>
+
+          <p>
+            <b>Lat/Lon:</b>
+            <%= @business.lat -%> / <%= @business.lon -%>
+          </p>
+
+          <p>
+            <%- Business::DAYS.each do |day| -%>
+              <%= "#{day.capitalize} opening: #{@business.send("#{day}_opening")}" -%>
+              <br />
+              <%= "#{day.capitalize} closing: #{@business.send("#{day}_closing")}" -%>
+              <br />
+            <%- end -%>
+          </p>
+
+          <p>
+            <b>Zone:</b>
+            <%= @business.zone -%>
+          </p>
+
+          <%= link_to 'Create Deal', new_deal_path(business_id: @business.id), class: 'btn btn-primary' -%>
+          <br />
+          <br />
+          <%= link_to 'Edit', edit_business_path(@business) %> |
+          <%= link_to 'Back', businesses_path %>
+
+          </div>
+        </div>
+      </div>
+    </div> 
+  </div> 
+</div>

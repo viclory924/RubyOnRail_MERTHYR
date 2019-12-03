@@ -1,0 +1,78 @@
+<%- business_id = params[:business_id] || (params[:user] && params[:user][:business_id]) -%>
+<%- business = Business.find(business_id) if business_id -%>
+<%- email = params[:email] || (params[:user] && params[:user][:email]) -%>
+<div class="content">
+  <div class="content-header" style="background-color: #ececec">
+
+  </div>
+  <div class="left-sidebar col-sm-6" style="background-color: #ececec"></div>
+  <div class="row animated fadeInUp">
+    <div class="col-sm-8">
+      <h4 class="section-subtitle"><b><%= business.present?? business.name : '' -%> &nbsp; Sign up</b></h4>
+      <div class="panel">
+        <div class="panel-content">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="panel-body">
+                <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: { class: 'form-horizontal' }, defaults: { input_html: { class: 'form-control' }}) do |f| %>
+                  <div class="form-inputs">
+                    <div class="form-group">
+                      <label for="email" class="col-sm-3 control-label">Email<span class="require">*</span></label>
+                      <div class="col-sm-6">
+                          <%= f.input :email, :required => true, input_html: { value: email.present?? email : '' }, label: false %>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="password" class="col-sm-3 control-label">Password<span class="require">*</span></label>
+                      <div class="col-sm-6">
+                          <%= f.input :password, :required => true, label: false %>
+                      </div>
+                    </div>                     
+                    <div class="form-group">
+                      <label for="password_confirmation" class="col-sm-3 control-label">Confirm Password<span class="require">*</span></label>
+                      <div class="col-sm-6">
+                        <%= f.input :password_confirmation, :required => true, label: false %>
+                        <%- if business -%>
+                          <%= f.input :business_id, as: :hidden, input_html: { value: business.id, readonly: true } -%>
+                        <%- end -%>
+                      </div>
+                    </div>                    
+                    
+                    <div class="form-group">
+                      <div class="col-sm-offset-3 col-sm-9">
+                        <%= f.button :submit, "Sign in", class: 'btn-primary' %>
+                        <br />
+                        <%= render "devise/shared/links" %>
+                      </div>
+                    </div>
+                  </div>  
+                <% end %>  
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+              
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

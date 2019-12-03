@@ -1,0 +1,206 @@
+.button{
+	width: auto;
+	margin: 1.875rem auto auto auto;
+	font-weight: 600;
+	border-radius: 0.1875rem;
+	box-shadow: 0 0 5px rgba(0,0,0,0.25);
+	@include breakpoint(small only){
+		margin: 1.125rem auto;
+		text-align: center;
+		position: relative;
+		display: block;
+	}
+	&.secondary{
+		color: $white;
+		border-width: 2px;
+		border-color: $secondary-color;
+		background-color: $secondary-color;
+		&:hover{
+			color: $white;
+			border-color: scale-color($secondary-color, $lightness: -14%);;
+			background: scale-color($secondary-color, $lightness: -14%);;
+		}
+	}
+	&.tertiary{
+		color: $white;
+		border-width: 2px;
+		border-color: $tertiary-color;
+		background-color: $tertiary-color;
+		&:hover{
+			color: $white;
+			border-color: scale-color($tertiary-color, $lightness: -14%);;
+			background: scale-color($tertiary-color, $lightness: -14%);;
+		}
+	}
+	&.white{
+		color: $dark-gray;
+		border-color: $white;
+		background: $white;
+		&:hover{
+			color: $dark-gray;
+			border-color: scale-color($white, $lightness: -14%);;
+			background: scale-color($white, $lightness: -14%);;
+		}
+	}
+	&.gray{
+		color: $dark-gray;
+		border-color: $light-gray;
+		background: $light-gray;
+		&:hover{
+			color: $dark-gray;
+			border-color: scale-color($light-gray, $lightness: -14%);;
+			background: scale-color($light-gray, $lightness: -14%);;
+		}
+	}
+	&.white-primary{
+		color: $dark-gray;
+		border-color: $white;
+		background: $white;
+		&:hover{
+			color: $white;
+			border-color: $primary-color;
+			background: $primary-color;
+		}
+	}
+	&.white-secondary{
+		color: $dark-gray;
+		border-color: $white;
+		background: $white;
+		&:hover{
+			color: $white;
+			border-color: $secondary-color;
+			background: $secondary-color;
+		}
+	}
+	&.white-gray{
+		color: $dark-gray;
+		border-color: $white;
+		background: $white;
+		&:hover{
+			color: $dark-gray;
+			border-color: $light-gray;
+			background: $light-gray;
+		}
+	}
+	&.hollow{
+		padding: 1rem;
+		border-width: 2px;
+		&:hover{
+			color: $white;
+			background: $primary-color;
+		}
+		&.secondary{
+			color: $secondary-color;
+			border-width: 2px;
+			border-color: $secondary-color;
+			background: transparent;
+			&:hover{
+				color: $white;
+				border-color: $secondary-color;
+				background: $secondary-color;
+			}
+		}
+		&.white{
+			color: $white;
+			border-color: $white;
+			background: transparent;
+			&:hover{
+				color: $primary-color;
+				border-color: $white;
+				background: $white;
+			}
+		}
+		&.gray{
+			color: $light-gray;
+			border-color: $light-gray;
+			background: transparent;
+			&:hover{
+				color: $dark-gray;
+				border-color: $light-gray;
+				background: $light-gray;
+			}
+		}
+		&.white-primary{
+			color: $white;
+			border-color: $white;
+			background: transparent;
+			&:hover{
+				color: $white;
+				border-color: $primary-color;
+				background: $primary-color;
+			}
+		}
+		&.white-secondary{
+			color: $white;
+			border-color: $white;
+			background: transparent;
+			&:hover{
+				color: $white;
+				border-color: $secondary-color;
+				background: $secondary-color;
+			}
+		}
+		&.white-gray{
+			color: $white;
+			border-color: $white;
+			background: transparent;
+			&:hover{
+				color: $dark-gray;
+				border-color: $light-gray;
+				background: $light-gray;
+			}
+		}
+	}
+	&.small{
+		padding: 0.5625rem 2rem;
+		font-size: 0.75rem;
+	}
+	&.small-center{
+		display: table;
+	}
+	&.wider{
+		min-width: 15rem;
+	}
+	&.round{
+		border-radius: 1000px;
+	}
+	&.no-margin{
+		margin: 0;
+	}
+	&.light{
+		color: $dark-gray;
+		background-color: #e6e7e8;
+		&:hover{
+			color: $white;
+			background-color: $secondary-color;
+		}
+	}
+	&.white{
+		background: $white;
+		&:hover{
+			background: $light-gray;
+		}
+	}
+}
+
+.input-group{
+	max-width: 28.75rem;
+	margin: 0 auto;
+	@include breakpoint(medium){
+		margin: 0 auto 0.625rem auto;
+	}
+	.input-group-field, .button{
+		width: 100%;
+		height: 3.125rem;
+		margin: 0 auto;
+		display: block;
+		@include breakpoint(medium){
+			display: inline-block;
+		}
+	}
+	.button{
+		@include breakpoint(medium){
+			padding: 0 2rem;
+		}
+	}
+}

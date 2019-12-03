@@ -1,0 +1,306 @@
+nav#navgiation,
+nav#navigation ul,
+nav#navigation ul li,
+nav#navigation ul li a,
+nav#navigation ul li a *{
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	line-height: 1;
+	color: $white;
+	list-style: none;
+	display: block;
+}
+
+nav#navigation{
+	ul{
+		height: 100%;
+		margin: 0;
+		padding: 0;
+		background: transparent;
+		display: flex;
+		@include breakpoint(medium){
+			padding: 0.53125rem 0;
+		}
+		li{
+			display: block;
+			flex: auto;
+			a{
+				height: 100%;
+				margin: 0;
+				padding: 0.375rem;
+				text-align: center;
+				color: $white;
+				display: block;
+				border-width: 0 1px 0 0;
+				border-style: solid;
+				border-image: linear-gradient(to bottom, transparent, $white, $white, transparent) 1 100%;
+				@include transition(all .25s ease-in-out);
+				&:hover{
+					>*{
+						color: $secondary-color;
+					}
+				}
+				>*{
+					display: block;
+				}
+				i{
+					margin: 0 0 0.25rem 0;
+					font-size: 1.3125rem;
+					line-height: 1;
+					@include breakpoint(medium){
+						font-size: 1.5rem;
+					}
+				}
+				span{
+					font-size: 0.6875rem;
+					line-height: 1;
+				}
+			}
+			&:first-of-type{
+				a{
+					border-left-width: 1px;
+				}
+			}
+			&:last-of-type{
+				a{
+					border-right-width: 1px;
+				}
+			}
+		}
+	}
+}
+
+#offCanvas{
+	.social-links{
+		width: 100%;
+		padding: 0 1rem 1rem 1rem;
+		text-align: center;
+		display: block;
+		a{
+			width: 1.875rem;
+			height: 1.875rem;
+			margin: auto 0.1875rem;
+			color: $white;
+			background-color: $primary-color;
+			border-radius: 0.1875rem;
+			display: inline-table;
+			overflow: hidden;
+			&:hover{
+				background-color: $secondary-color;
+			}
+			i{
+				text-align: center;
+				vertical-align: middle;
+				display: table-cell;
+			}
+		}
+	}
+}
+
+nav#offnav,
+nav#offnav ul.block-menu,
+nav#offnav ul.block-menu li,
+nav#offnav ul.block-menu li a{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	font-family: $body-font-family;
+	font-size: 1rem;
+	font-weight: normal;
+	color: $black;
+	line-height: 1;
+	display: block;
+	position: relative;
+	@include transition(all .25s ease-in-out);
+}
+
+nav#offnav ul.block-menu{
+	width: 100%;
+	padding: 1rem;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+nav#offnav ul.block-menu li{
+	max-width: calc(50% - 0.3125rem);
+	margin-bottom: 0.625rem;
+	display: block;
+	flex: calc(50% - 0.3125rem);
+	&:nth-child(odd){
+		margin-right: 0.625rem;
+	}
+}
+
+nav#offnav ul.block-menu li a{
+	margin: 0;
+	padding: 2rem 0.625rem;
+	text-align: center;
+	color: $white;
+	border-radius: 0.1875rem;
+	background-color: $primary-color;
+	display: block;
+	overflow: hidden;
+	i,span{
+		font-size: 0.6875rem;
+		margin: 0 0 0.0625rem 0;
+		line-height: 1;
+		display: block;
+	}
+	i{
+		font-size: 1.5rem;
+		margin: 0 0 0.25rem 0;
+	}
+	&.secondary{
+		background-color: $secondary-color;
+	}
+	&.tertiary{
+		background-color: $tertiary-color;
+	}
+	&.quadary{
+		background-color: $quadary-color;
+	}
+}
+
+nav#offnav ul.block-menu li a i{
+
+}
+
+nav#offnav,
+nav#offnav ul.menu,
+nav#offnav ul.menu li,
+nav#offnav ul.menu li a{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	font-family: $body-font-family;
+	font-size: 1rem;
+	font-weight: normal;
+	color: $black;
+	line-height: 1;
+	display: block;
+	position: relative;
+	@include transition(all .25s ease-in-out);
+}
+
+nav#offnav{
+	ul.menu{
+		li{
+			a{
+				padding: 1.0625rem 1rem;
+				border-width: 0 0 1px 0;
+				border-style: solid;
+				border-color: $light-gray;
+				&:hover{
+					color: $primary-color;
+				}
+			}
+		}
+	}
+	.is-accordion-submenu-parent{
+		li{
+			a{
+				padding: 0.90625rem 1rem 0.90625rem 1.5rem;
+				color: $cool-gray-2;
+			}
+		}
+		>a{
+			position: relative;
+			&:after{
+				display: none;
+			}
+			>span{
+				width: 3.125rem;
+				height: 3.125rem;
+				background-color: $cool-gray-2;
+				display: block;
+				position: absolute;
+				top: 0;
+				right: 0;
+				z-index: 3;
+				@include transition(all .15s ease-in-out);
+				&:before, &:after{
+					content: '';
+					background: $white;
+					display: block;
+					position: absolute;
+					z-index: 4;
+					@include transition(all .25s ease-in-out);
+				}
+				&:before{
+					width: 0.875rem;
+					height: 0.125rem;
+					top: 24px;
+					right: 18px;
+				}
+				&:after{
+					width: 0.125rem;
+					height: 0.875rem;
+					top: 18px;
+					right: 24px;
+				}
+			}
+			&:hover{
+				span{
+					border-bottom: 3.125rem solid $primary-color;
+				}
+			}
+		}
+		&.is-open{
+			>a{
+				span{
+					&:after{
+						@include rotate(-90deg);
+					}
+				}
+			}
+		}
+	}
+}
+
+ul.breadcrumbs{
+	margin: 0 0 1rem 0 !important;
+	display: flex;
+	li{
+		a{
+			margin: 0;
+			padding: 0.8125rem 1.5rem;
+			font-size: 0.875rem;
+			line-height: 1;
+			background-color: $medium-gray;
+			border-radius: 0.1875rem;
+			clip-path: polygon(0 0, calc(100% - 0.5rem) 0%, 100% 50%, calc(100% - 0.5rem) 100%, 0 100%, calc(0% + 0.5rem) 50%);
+			@include box-shadow(0 0 8px rgba(0, 0, 0, 0.2));
+			display: block;
+			position: relative;
+			overflow: hidden;
+		}
+		&:first-of-type{
+			a{
+				padding: 0.8125rem 1.5rem 0.8125rem 1rem;
+				color: $primary-color;
+				background-color: $white;
+				clip-path: polygon(0 0, calc(100% - 0.5rem) 0%, 100% 50%, calc(100% - 0.5rem) 100%, 0 100%, 0 50%);
+			}
+		}
+		&:last-of-type{
+			flex: 1;
+			a{
+				width: 100%;
+				margin: 0;
+				padding: 0.8125rem 1rem 0.8125rem 1.5rem;
+				color: $white;
+				background-color: $primary-color;
+				clip-path: polygon(0 0, 100% 0%, 100% 50%, 100% 100%, 0 100%, calc(0% + 0.5rem) 50%);
+				display: block;
+			}
+		}
+		&:before{
+			display: none;
+		}
+		&:after{
+			display: none;
+		}
+	}
+}

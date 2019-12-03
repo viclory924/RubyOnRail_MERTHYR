@@ -1,0 +1,22 @@
+<script type="text/javascript" charset="utf-8">
+  $(function(){
+     //load and show the initial set of events on dashboard
+    loadBusinessesForPagination(1, window.location.href);
+
+     //infinite scroll events on dashboard
+     window.businessesPageNum = 2;
+     window.doPagination = true;
+     $(window).scroll(function(){
+      //if($(window).scrollTop() == $(document).height() - $(window).height()){
+      if($(window).scrollTop() > $(document).height() - $(window).height() - 100){
+        if(window.doPagination){
+          // run call for pagination
+        loadBusinessesForPagination(window.businessesPageNum, window.location.href);
+          window.businessesPageNum++;
+        }else{
+          $('#infinite-loader').html('You reached the bottom.').show();
+        }
+      }
+      });
+  }) 
+</script>

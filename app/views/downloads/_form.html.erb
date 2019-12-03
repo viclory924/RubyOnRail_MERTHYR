@@ -1,0 +1,54 @@
+<div class="row animated fadeInUp">
+  <div class="col-sm-12">
+    <div class="panel">
+      <div class="panel-content">
+        <div class="row">
+          <div class="col-md-12">
+            <%= simple_form_for @download, html: { class: 'form-horizontal'}, defaults: { input_html: { class: 'form-control' }} do |f| %>
+              <div class="form-group">
+                <label for="title" class="col-sm-3 control-label">Title<span class="require">*</span></label>
+                <div class="col-sm-6">
+                  <%= f.input :title, label: false %>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="category" class="col-sm-3 control-label">Category</label>
+                <div class="col-sm-6">
+                  <%= f.select :category, [['Newletters','Newsletters'],['Events','Events'],['Reports','Reports'],['General','General']], include_blank: true, label: false -%>
+                </div>
+              </div>              
+              <%- if @download.file.present? -%>
+                <div class="form-group">
+                  <label class="col-sm-3 control-label"></label>
+                  <div class="col-sm-6">
+                    <%= link_to File.basename(@download.file.path), @download.file.url %>
+                  </div>
+                </div>
+                <div class='form-group'>
+                  <label class="col-lg-2 control-label" for="download_remove_file"></label>
+                  <div class="col-lg-10">
+                    <div class="checkbox">
+                      <input type="checkbox" id="download_remove_file" name="download[remove_file]" class="boolean optional" value="1" />
+                      <label for="download_remove_file">Remove current file</label>
+                    </div>
+                  </div>
+                </div>
+              <% end %>  
+              <div class="form-group">
+                <label for="File" class="col-sm-3 control-label">File<span class="require">*</span></label>
+                <div class="col-sm-6">
+                  <%= f.input :file, label: false -%>
+                </div>
+              </div>              
+              <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-9">
+                  <%= f.button :submit, class: 'btn-primary' %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

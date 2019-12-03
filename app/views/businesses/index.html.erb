@@ -1,0 +1,70 @@
+<div class="content">
+  <!-- content HEADER -->
+  <!-- ========================================================= -->
+  <div class="content-header">
+    <!-- leftside content header -->
+    <div class="leftside-content-header">
+      <ul class="breadcrumbs">
+        <li class="active-item"><a href="#">Businesses</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="row animated fadeInRight">
+    <div class="col-sm-12">
+      <h4 class="section-subtitle"><b>Listing</b> businesses</h4>
+      <p> 
+        <%= link_to('New Business', new_business_path) if can?(:new, Business) %> |
+        <%= link_to('Less Active', less_active_businesses_path) if can?(:new, Business) %> 
+      </p>
+      <div class="panel">
+        <div class="panel-content">
+          <div class="table-responsive">
+            <table class="table table-striped table-hover">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Category</th>
+                  <th>Contact</th>
+                  <th>Telephone</th>
+                  <th>Zone</th>
+                  <%- if can?(:edit, Business) -%>
+                    <th>Actions</th>
+                  <%- end -%>
+                </tr>
+              </thead>
+              <tbody>
+                <% @businesses.each do |business| %>
+                  <tr>
+                    <td><%= business.name %></td>
+                    <td><%= business.category %></td>
+                    <td><%= business.contact %></td>
+                    <td><%= business.telephone %></td>
+                    <td><%= business.zone %></td>
+                    <%- if can?(:edit, Business) -%>
+                      <td>
+                        <div class="btn-group btn-group-xs">
+                          <%= link_to business, id: "logo" do %>
+                            <i class="fa fa-eye"></i>
+                          <% end %>
+                          <%= link_to edit_business_path(business), id: "logo" do %>
+                            <i class="fa fa-pencil"></i>
+                          <% end %>
+                          <% if can?(:destroy, Business) %>
+                            <%= link_to business, method: :delete, data: { confirm: 'Are you sure?' }, id: "logo" do %>
+                              <i class="fa fa-times"></i>
+                            <% end %>
+                          <%end %>
+                        </div>
+                      </td>
+                    <%- end -%>
+                  </tr>
+              <% end %>
+              </tbody>
+            </table>
+            <%= paginate @businesses -%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

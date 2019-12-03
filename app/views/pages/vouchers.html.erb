@@ -1,0 +1,25 @@
+<div id="hero-banner" class="hero-banner-deals">
+	<div class="overlay"></div>
+	<div class="banner-content">
+		<div class="content-wrap">
+			<div class="row content-padding">
+				<div class="columns text-center">
+					<h1>Deals</h1>
+					<p>You can now access the very best deals with your <a href="<%= public_new_subscriber_path %>">We Love Merthyr loyalty card</a></p>
+					<a href="<%= public_new_subscriber_path %>" class="button secondary wider">Apply Now</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<section class="content-padding">
+	<div class="row content-padding">
+		<div class="column text-center medium-text-left">
+			<h2>Get the best deals in Merthyr Tydfil Town Centre</h2>
+		</div>
+	</div>
+	<div class="row small-up-1 medium-up-2 large-up-3 content-padding" data-equalizer data-equalize-on="medium" data-equalize-by-row="true">
+    <%= render partial: 'pages/voucher', collection: @deals.to_a.shuffle -%>
+	</div>
+</section>

@@ -1,0 +1,72 @@
+<div class="dow">
+  <div class="col-lg-8 content">
+      <div class="bread_crumbs">
+        <%= link_to 'Home', front_path -%> > News
+      </div>
+      <h1 class="red">News</h1>
+  </div>
+  <div class="col-lg-4">
+  </div>
+</div>
+
+<div class="col-lg-8 content">
+  <div class="blog">
+    <ul class="posts_list">
+      <%- @posts.each do |p| -%>
+        <li>
+          <div class="post_header">
+            <div class="post_date">
+              <span class="day"><%= p.published_at.strftime("%d") -%></span>
+              <span class="month"><%= p.published_at.strftime("%B") -%></span>
+            </div>
+            <h4 class="red"> <%= link_to p.title, blog_post_path(p) -%> </h4>
+            <div class="entry_meta">
+              <span class="post_category">
+                <a href="#"><%= p.category -%></a>
+              </span>
+              <!--
+              |
+              <span class="post_author">
+                Author: Lyn Williams
+              </span>-->
+            </div>
+          </div>
+          <%- if p.image.present? -%>
+            <div class="post_thumbnail">
+              <%= link_to blog_post_path(p), class: 'thumbnail' do -%>
+                <%= image_tag p.image_url("#{p.image_mode}_big_thumb".to_sym) -%>
+              <%- end -%>
+            </div>
+          <%- end -%>
+
+          <%- truncated_100 = strip_tags(p.body)[/(\s*\S+){,100}/] -%>
+
+          <%- if truncated_100.length < p.body.length -%>
+            <%= raw truncated_100 -%>
+            <%= link_to '...more', blog_post_path(p), class: 'more_post' -%>
+          <%- else -%>
+            <%= raw p.body -%>
+          <%- end -%>
+        </li>
+      <%- end -%>
+    </ul>
+
+    <ul class="pagination">
+      <%= paginate @posts -%>
+     </ul>
+  </div>
+</div>
+
+<div class="col-lg-4 sidebar">
+  <div class="widget">
+    <!--<h3 class="red">Categories</h3>-->
+    <!--<div class="widget_categories">-->
+      <!--< %- Post::CATEGORIES.sample(6).each do |c| -%>-->
+        <!--< %= link_to c, '#', class: 'btn btn-s btn-black' -%>-->
+      <!--< %- end -%>-->
+    <!--</div>-->
+  </div>
+  <div class="widget">
+    <%= render partial: 'shared/sidebar_socials' -%>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<div id="hero-banner" class="hero-banner-food">
+	<div class="overlay"></div>
+	<div class="banner-content">
+		<div class="content-wrap">
+			<div class="row content-padding">
+				<div class="column text-center">
+					<div class="row">
+						<div class="columns">
+							<h1>Food & Drink</h1>
+							<p>Looking for a place to get a quick bite to eat, a drink with friends or a romantic meal with your partner? Merthyr Tydfil Town Centre has plenty of bars, cafés, coffee shops and restaurants to choose from. Check them out below. </p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="small-12 medium-12 column">
+							<p class="sub-heading">Find a place to eat or drink</p>
+							<%= form_tag public_businesses_search_path, method: 'get', style: 'background: transparent;' do -%>
+								<div class="input-group">
+									<input name="query" class="input-group-field" type="text" placeholder="Search">
+									<div class="input-group-button">
+										<input type="submit" class="button" value="Go">
+									</div>
+								</div>
+							<%- end -%>
+							<p>or browse local cafes, pubs and restaurants below</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

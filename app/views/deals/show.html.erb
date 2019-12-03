@@ -1,0 +1,68 @@
+<div class="content">
+  <!-- content HEADER -->
+  <!-- ========================================================= -->
+  <div class="content-header">
+    <!-- leftside content header -->
+    <div class="leftside-content-header">
+      <ul class="breadcrumbs">
+        <li><i class="fa fa-columns" aria-hidden="true"></i><a href="#">Deals</a></li>
+        <li><a>Show</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="row animated fadeInRight">
+    <div class="col-sm-12">
+      <% unless notice.blank? %>
+        <p id="notice" class="alert alert-success"><%= notice %></p>
+      <% end %>
+      <div class="panel">
+        <div class="panel-content">
+          <div class="table-responsive">            
+            <p>
+              <b>Title:</b>
+              <%= @deal.title %>
+            </p>
+
+            <p>
+              <b>Description:</b>
+              <%= @deal.description %>
+            </p>
+
+            <p>
+              <b>Image:</b>
+              <%= image_tag(@deal.image_url(:admin_thumb)) if @deal.image.present? %>
+            </p>
+
+            <p>
+              <b>Start date:</b>
+              <%= @deal.start_date.strftime("#{@deal.start_date.day.ordinalize} %b, %Y") %>
+            </p>
+
+            <p>
+              <b>End date:</b>
+              <%= @deal.end_date.strftime("#{@deal.end_date.day.ordinalize} %b, %Y") %>
+            </p>
+
+            <p>
+              <b>Status:</b>
+              <%= @deal.status %>
+            </p>
+
+            <p>
+              <b>Business:</b>
+              <%= @deal.business.name %>
+            </p>
+
+            <p>
+              <b>Terms:</b>
+              <%= @deal.terms %>
+            </p>
+
+            <%= link_to 'Edit', edit_deal_path(@deal) %> |
+            <%= link_to 'Back', deals_path %>
+          </div>
+        </div>
+      </div>
+    </div> 
+  </div> 
+</div>

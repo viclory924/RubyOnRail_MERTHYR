@@ -1,0 +1,28 @@
+<div class="col-lg-8 content">
+  <div class="bread_crumbs">
+    <a href="<%= front_path -%>">Home</a> > <%= params[:cat] -%>
+  </div>
+  <h1 class="red"><%= params[:cat] -%> in Merthyr Town Centre </h1>
+
+  <p><%=raw @template.try(:body) -%></p>
+
+  <div class="shopping">
+    <h1 class="border_bottom">A-Z of <%= params[:cat] -%> in Merthyr Tydfil Town Centre</h1>
+    <ul class="shopping_list">
+        <%= render partial: 'pages/business_category', collection: @businesses %>
+    </ul>
+    <%= paginate @businesses %>
+    <!--<ul class="pagination">-->
+      <!--< %- ('a'..'z').each do |s| -%>-->
+        <!--< %- if @businesses.detect { |b| b.name.downcase.starts_with? s } -%>-->
+          <!--< %- if @starts_with == s -%>-->
+            <!--<li class="active"> <a href="#">< %= s.capitalize -%> <span class="sr-only">(current)</span></a> </li>-->
+          <!--< %- else -%>-->
+            <!--< %- custom_params = params.except(:controller, :action) -%>-->
+            <!--<li>< %= link_to s.capitalize, public_businesses_category_path(custom_params.merge(starts_with: s)) -%></li>-->
+          <!--< %- end -%>-->
+        <!--< %- end -%>-->
+      <!--< %- end -%>-->
+    <!--</ul>-->
+  </div>
+</div>

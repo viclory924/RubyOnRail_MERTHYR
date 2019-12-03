@@ -1,0 +1,42 @@
+<div class="content">
+  <!-- content HEADER -->
+  <!-- ========================================================= -->
+  <div class="content-header">
+    <!-- leftside content header -->
+    <div class="leftside-content-header">
+      <ul class="breadcrumbs">
+        <li><i class="fa fa-columns" aria-hidden="true"></i><a href="#">Downloads</a></li>
+        <li><a>Show</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="row animated fadeInRight">
+    <div class="col-sm-12">
+      <% unless notice.blank? %>
+        <p id="notice" class="alert alert-success"><%= notice %></p>
+      <% end %>
+      <div class="panel">
+        <div class="panel-content">
+          <div class="table-responsive">
+            <p>
+              <b>Title:</b>
+              <%= @download.title %>
+            </p>
+
+            <p>
+              <b>Title:</b>
+              <%= @download.category %>
+            </p>
+
+            <p>
+              <b>File:</b>
+              <%= link_to File.basename(@download.file.path), @download.file.url %>
+            </p>
+            <%= link_to 'Edit', edit_download_path(@download) %> |
+            <%= link_to 'Back', downloads_path %>
+          </div>
+        </div>
+      </div>
+    </div> 
+  </div> 
+</div>

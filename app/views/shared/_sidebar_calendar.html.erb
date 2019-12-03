@@ -1,0 +1,23 @@
+<div class="events_calendar">
+  <h2 id="month">
+    <%= link_to "<", date: @date.prev_month %>
+    <%= @date.strftime("%B %Y") %>
+    <%= link_to ">", date: @date.next_month %>
+  </h2>
+  <%= calendar @date do |date| %>
+      <p class="calendar_day" data-toggle="popover">
+        <%= date.day %>
+      </p>
+      <!--< %- if @events_by_date[date] %>-->
+          <ul>
+            <% @events.each do |event| %>
+                <!--< % events[1].each do |event| %>-->
+                    <%- if event.next_occurrence.to_date == date %>
+                        <li><%= link_to event.name, public_event_path(event) %></li>
+                    <% end %>
+                <!--< % end %>-->
+            <% end %>
+          </ul>
+      <!--< % end %>-->
+  <% end %>
+</div>

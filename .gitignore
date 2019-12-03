@@ -1,0 +1,25 @@
+log/*.log
+*.log
+/tmp/
+doc/
+*.swp
+*~
+.DS_Store
+config/database.yml
+pull_*
+routes.txt
+.rvmrc
+public/uploads
+/coverage
+.rbenv-gemsets
+.ruby-version
+
+# editors
+*.swp
+*.swo
+*.sublime-workspace
+*.idea
+.idea/**
+.project
+welovemerthyr/
+.sass-cache/

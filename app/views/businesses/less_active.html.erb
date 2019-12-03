@@ -1,0 +1,57 @@
+<div class="content">
+  <!-- content HEADER -->
+  <!-- ========================================================= -->
+  <div class="content-header">
+    <!-- leftside content header -->
+    <div class="leftside-content-header">
+      <ul class="breadcrumbs">
+        <li><i class="fa fa-columns" aria-hidden="true"></i><a href="#">Less active businesses</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="row animated fadeInRight">
+    <div class="col-sm-12">
+      <h1>Less active businesses</h1>
+      <p>
+        These businesses haven't been modified for 6 months.
+      </p>
+      <p>
+        Showing <%= pluralize(@less_active_businesses.size, 'business') %>
+      </p>
+      <div class="panel">
+        <div class="panel-content">
+          <div class="table-responsive">
+            <table class="table table-striped table-hover">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Category</th>
+                  <th>Contact</th>
+                  <th>Telephone</th>
+                  <th>Last modified</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @less_active_businesses.each do |business| %>
+                  <tr>
+                    <td><%= link_to business.name, business %></td>
+                    <td><%= business.category %></td>
+                    <td><%= business.contact %></td>
+                    <td><%= business.telephone %></td>
+                    <td>
+                      <% if business.updated_at %>
+                      <%= business.updated_at.strftime('%Y-%b-%d')  %>
+                      <% elsif business.created_at %>
+                      <%= business.created_at.strftime('%Y-%b-%d')  %>
+                      <% end %>
+                    </td>
+                  </tr>
+                  <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>  
+      </div>
+    </div>
+  </div>  
+</div>

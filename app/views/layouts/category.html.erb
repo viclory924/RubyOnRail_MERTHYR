@@ -1,0 +1,32 @@
+<%= content_for :sidebar do -%>
+  <div class="col-lg-4 sidebar">
+    <%- if @template -%>
+      <%- sliders = @template.business_category_template_images -%>
+      <%- slider_has_images = sliders.select { |s| s.image.present? }-%>
+      <%- if slider_has_images.any? -%>
+        <div class="widget">
+          <p>
+            <div id="business_category_carousel">
+              <%- sliders.each do |slider| -%>
+                <%= image_tag(slider.image_url(:thumb), style: "height:auto;display:block;float:left") if slider.image.present? -%>
+              <%- end -%>
+            </div>
+            <div style="float:none;clear:both"></div>
+          </p>
+        </div>
+      <%- end -%>
+    <%- end -%>
+
+    <div class="widget widget_search">
+      <%= render partial: 'shared/sidebar_search' -%>
+    </div>
+
+    <div class="widget">
+      <%= render partial: 'shared/sidebar_tags', locals: { tags: @random_services } -%>
+    </div>
+
+    <%= render partial: 'shared/latest_vouchers' -%>
+  </div>
+<%- end -%>
+
+<%= render template: 'layouts/application' -%>

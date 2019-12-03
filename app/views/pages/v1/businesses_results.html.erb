@@ -1,0 +1,83 @@
+<div class="col-lg-8 content">
+  <div class="bread_crumbs">
+    <a href="<%= front_path -%>">Home</a> > Search results
+  </div>
+  <h1 class="red"><%= params[:query].present?? params[:query] : 'All' -%> businesses in Merthyr Town Centre </h1>
+
+  <p><%=raw @template.try(:body) -%></p>
+
+  <div class="shopping">
+    <h1 class="border_bottom">A-Z of <%= params[:query] -%> businesses in Merthyr Tydfil Town Centre</h1>
+    <ul class="shopping_list">
+      <%- @businesses.each do |pb| -%>
+        <li>
+              <h4><%= link_to pb.name, public_business_path(pb) -%></h4>
+
+              <div class="info">
+                <p><%= pb.full_address -%></p>
+                <div class="tel"><%= pb.telephone -%></div>
+                <div class="url"><a href="<%= pb.website -%>" target="_blank"><%= pb.website -%></a></div>
+                <div class="clear"></div>
+                <!--
+                <br />
+                <br />
+                <div>
+                  <%#- Business::DAYS.each do |d| -%>
+                    <div class='open_close'>
+                      <%#- %w(opening closing).each do |t| -%>
+                        <%#- time = pb.send("#{d}_#{t}") -%>
+                        <%#= "#{d.capitalize} #{t}" -%>: <%#= time.present?? time : "Please contact for #{t} time" -%>
+                        <br />
+                      <%#- end -%>
+                    </div>
+                  <%#- end -%>
+                </div>-->
+              </div>
+
+              <div class="white_block">
+                <div class="col-lg-8">
+                  <a href="#" ><%= pb.profile -%></a>
+                </div>
+                <div class="b-share_links">
+                  <!-- AddThis Button BEGIN -->
+                  <div class="addthis_toolbox addthis_default_style ">
+                    <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+                    <a class="addthis_button_tweet" style="width:80px"></a>
+                    <a class="addthis_button_pinterest_pinit" style="width:50px" pi:pinit:layout="horizontal"></a>
+                    <a class="addthis_counter addthis_pill_style"></a>
+                  </div>
+                  <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+                  <script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-526e92c31dafd4cc"></script>
+                  <!-- AddThis Button END -->
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+
+            <!--
+            <div class="col-lg-2 events_thumbnail">
+              <a href="#" class="thumbnail">
+                <%#- if pb.photo.present? -%>
+                  <%#= image_tag pb.photo_url(:small_thumb_2) -%>
+                <%#- else -%>
+                  <div style="background-color:#aaa;width:257px;height:153px"></div>
+                <%#- end -%>
+              </a>
+            </div>-->
+        </li>
+      <%- end -%>
+    </ul>
+    <!--< %= paginate @businesses %>-->
+    <!--<ul class="pagination">-->
+      <!--< %- ('a'..'z').each do |s| -%>-->
+        <!--< %- if @businesses.detect { |b| b.name.downcase.starts_with? s } -%>-->
+          <!--< %- if @starts_with == s -%>-->
+            <!--<li class="active"> <a href="#">< %= s.capitalize -%> <span class="sr-only">(current)</span></a> </li>-->
+          <!--< %- else -%>-->
+            <!--< %- custom_params = params.except(:controller, :action) -%>-->
+            <!--<li>< %= link_to s.capitalize, public_businesses_search_path(custom_params.merge(starts_with: s)) -%></li>-->
+          <!--< %- end -%>-->
+        <!--< %- end -%>-->
+      <!--< %- end -%>-->
+    <!--</ul>-->
+  </div>
+</div>

@@ -1,0 +1,68 @@
+// Place all the styles related to the Events controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.events > .col-md-10 > span:hover {
+  color: #e84530;
+}
+.custom_datetime {
+  display: inline;
+  width: 17%;
+}
+.events_calendar .calendar {
+  border-collapse: collapse;
+  width: 100%;
+
+
+}
+.events_calendar .calendar td,
+.events_calendar .calendar th {
+  font-family: "Lucida Grande", arial, helvetica, sans-serif;
+  font-size: 9px;
+  padding: 6px;
+  border: 1px solid #999;
+}
+
+.events_calendar .calendar th {
+  background: #DDD;
+  color: #666;
+  text-align: center;
+  width: 14.2857142857143%;
+}
+
+.events_calendar .calendar td {
+  background: #FFF;
+  color: #777;
+  height: 14.2857142857143%;
+  vertical-align: top;
+  font-size: 16px;
+}
+
+.events_calendar .calendar .notmonth,
+.events_calendar .calendar .notmonth a { color: #CCC; }
+.events_calendar .calendar .today { background-color: #D7F2FF; }
+
+
+
+
+
+.events_calendar #month {
+  margin: 0;
+  padding-bottom: 10px;
+  text-align: center;
+  font-size: 22px;
+
+}
+.events_calendar #month a {
+  text-decoration: none;
+  padding: 0 10px;
+  color: #999;
+}
+
+
+
+.events_calendar ul {
+  font-size: 11px;
+  padding-left: 0px;
+  list-style: none;
+}

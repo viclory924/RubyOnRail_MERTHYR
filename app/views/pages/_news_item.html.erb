@@ -1,0 +1,21 @@
+<div class="post-excerpt-horizontal">
+  <div class="post-image">
+    <div class="overlay tertiary">
+      <div class="link-icon"><i class="fa fa-link"></i></div>
+    </div>
+    <%= image_tag news_item.image_url(:f_thumb) -%>
+  </div>
+  <div class="post-content">
+    <h3 class="title"><%= link_to truncate(news_item.title, length: 30), blog_post_path(news_item) %></h3>
+    <div class="post-meta">
+      <div class="post-meta-item">
+        <div class="icon">
+          <i class="fa fa-pencil"></i>
+        </div>
+        <div class="text">
+          <p><%= news_item.published_at.strftime("%A #{news_item.published_at.day.ordinalize} %B %Y") %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,74 @@
+<section class="single-listing light-gray-bg content-padding">
+	<div class="row">
+		<div class="column">
+			<ul class="breadcrumbs">
+        <li><a href="<%= front_path -%>"><i class="fa fa-home"></i></a></li>
+        <li class="show-for-medium"><a href="<%= public_businesses_category_path(@business.category) -%>"><span><%= @business.category -%></span></a></li>
+        <li><a href="<%= public_business_path(@business) %>"><span><%= @business.name -%></span></a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="row">
+		<div class="small-12 medium-8 column">
+			<div class="single-content-wrap">
+				<div class="single-content-feature">
+          <%= image_tag(@business.photo_url(:f_large)) %>
+				</div>
+				<div class="single-content">
+          <h3><%= @business.name -%></h3>
+					<div class="post-meta">
+            <% unless @business.full_address.blank? -%>
+              <div class="post-meta-item">
+                <div class="icon">
+                  <i class="fa fa-map-marker"></i>
+                </div>
+                <div class="text">
+                  <p><%= @business.full_address -%></p>
+                </div>
+              </div>
+            <% end %>
+
+            <% unless @business.telephone.blank? -%>
+              <div class="post-meta-item">
+                <div class="icon">
+                  <i class="fa fa-phone"></i>
+                </div>
+                <div class="text">
+                  <p><%= @business.telephone -%></p>
+                </div>
+              </div>
+            <% end %>
+
+            <% unless @business.website.blank? -%>
+              <div class="post-meta-item">
+                <div class="icon">
+                  <i class="fa fa-link"></i>
+                </div>
+                <div class="text">
+                  <p><a href="<%= @business.website -%>"><%= @business.website -%></a></p>
+                </div>
+              </div>
+            <% end %>
+					</div>
+          <%=raw @business.profile -%>
+					<hr>
+                  Share this business: 
+					<div class="sharethis-inline-share-buttons"></div>
+
+				</div>
+			</div>
+		</div>
+		<div class="small medium-4 column">
+			<div class="single-content-wrap">
+				<div class="single-content">
+					<h4>Opening Times</h4>
+					<ul class="opening-times">
+            <%- Business::DAYS.each do |d| -%>
+              <li><span><%= d.titleize %>:</span><%= business_opening_closing_hours(@business, d) %></li>
+            <% end -%>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

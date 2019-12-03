@@ -1,0 +1,9 @@
+development:
+  app_id: '1410335719200136'
+  app_secret: '60903fd84777ac414d7003540667ce48'
+  perms: 'email,publish_stream,offline_access'
+
+production:
+  app_id: <%= ENV['FACEBOOK_APP_ID'] %>
+  app_secret: <%= ENV['FACEBOOK_APP_SECRET'] %>
+  perms: 'email,publish_stream,offline_access'

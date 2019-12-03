@@ -1,0 +1,31 @@
+<div id="hero-banner" class="hero-banner-services">
+	<div class="overlay"></div>
+	<div class="banner-content">
+		<div class="row content-padding">
+			<div class="column text-center">
+				<div class="content-wrap">
+					<div class="row">
+						<div class="columns">
+							<h1>Services</h1>
+							<p>Merthyr Tydfil has everything you need as a local resident or visitor staying in the area, with an excellent choice of independent businesses and high street names offering an extensive range of services.</p>
+						</div>
+					</div>
+					<div class="row align-center">
+						<div class="small-12 medium-12 column">
+							<p class="sub-heading">Find a product, service or business</p>
+							<%= form_tag public_businesses_search_path, method: 'get', style: 'background: transparent;' do -%>
+								<div class="input-group">
+									<input name="query" class="input-group-field" type="text" placeholder="Search">
+									<div class="input-group-button">
+										<input type="submit" class="button" value="Go">
+									</div>
+								</div>
+							<%- end -%>
+							<p>or browse our services below</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

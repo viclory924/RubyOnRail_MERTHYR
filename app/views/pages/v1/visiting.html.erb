@@ -1,0 +1,91 @@
+<div class="row">
+  <div class="col-lg-12">
+      <div class="bread_crumbs">
+        <a href="index.html">Home</a> > Visiting Merthyr Town Centre
+      </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div id="visiting_carousel">
+      <%= image_tag 'visiting/market.jpg', class: 'thumbnail', style: "height:auto;display:block;float:left" -%>
+      <%= image_tag 'visiting/highstreet.jpg', class: 'thumbnail', style: "height:auto;display:block;float:left" -%>
+      <%= image_tag 'visiting/clarks.jpg', class: 'thumbnail', style: "height:auto;display:block;float:left"  -%>
+      <%= image_tag 'visiting/church.jpg', class: 'thumbnail', style: "height:auto;display:block;float:left"  -%>
+    </div>
+    <div style:"float:none;clear:both"></div>
+  </div>
+</div>
+
+<div class="row visiting_row home_latest_post_block">
+  <div class="col-xs-12 col-md-3 col-lg-3 ">
+    <div class="thumbnail">
+       <div class="palette palette_small palette-night-dark" >When You're Here</div>
+       <div class="1equalHeights visiting_block">
+         <a style="display:block" href="<%= public_page_show_path('When youre here'.parameterize)-%>"><img src="/assets/whenV2.png" alt="" style:'display:block'/></a>
+       </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="col-xs-12 col-md-3 col-lg-3 ">
+    <div class="thumbnail">
+       <div class="palette palette_small palette-firm-dark" >Places To Visit</div>
+       <div class="1equalHeights visiting_block">
+         <a href="<%= public_page_show_path('Places to visit'.parameterize) -%>"><img src="/assets/placesV2.png" alt="" /></a>
+       </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="col-xs-15 col-sm-6 col-md-6 col-lg-6">
+    <p>
+      A very warm welcome to Merthyr Tydfil - the largest town in the beautiful Welsh Valleys and well known for its vibrant centre and friendly atmosphere.
+      Merthyr Tydfil Town Centre is a great place to visit for shopping, eating and drinking,
+      as well as providing a wonderful stepping-stone to the amazing array of attractions and activities on its doorstep.
+    </p>
+
+    <p>
+      You can find out here all about the shops, cafes, restaurants and professional services that Merthyr Tydfil Town Centre
+      has to offer in our easy to use directory. Look out also for a host of special offers and promotions from the
+      town’s businesses – you don’t want to miss out on a great discount from a favourite shop or restaurant!
+    </p>
+  </div>
+</div>
+
+<div class="row visiting_row home_latest_post_block">
+  <div class="col-xs-12 col-md-4 col-lg-3 ">
+    <div class="thumbnail">
+         <div class="palette palette_small palette-info" >Maps & Guides</div>
+         <div class="1equalHeights visiting_block">
+           <a href="<%= public_guides_path -%>"><img src="/assets/mapV2.png" alt="" /></a>
+         </div>
+    </div>
+  </div>
+  <div class="col-xs-12 col-md-3 col-lg-3 ">
+    <div class="thumbnail">
+         <div class=" palette palette_small palette-alizarin" >Parking</div>
+         <div class="1equalHeights visiting_block">
+           <a href="<%= public_page_show_path('Parking Information'.parameterize)-%>"><img src="/assets/parkingV2.png" alt="" /></a>
+         </div>
+      </div>
+      <div class="clearfix"></div>
+  </div>
+  <div class="col-xs-12 col-md-3 col-lg-3 ">
+    <div class="thumbnail">
+       <div class=" palette palette_small palette-success" >Staying</div>
+       <div class="1equalHeights visiting_block">
+         <a href="<%= public_businesses_category_path(Business::CATEGORIES[4]) -%>"><img src="/assets/stayingV2.png" alt="" /></a>
+       </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="col-xs-12 col-md-3 col-lg-3 ">
+    <div class="thumbnail">
+       <div class="palette palette_small palette-concrete" >Getting Here</div>
+       <div class="1equalHeights visiting_block">
+         <a href="<%= public_page_show_path('Getting Here'.parameterize)-%>"><img src="/assets/gettingV2.png" alt="" /></a>
+       </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</div>

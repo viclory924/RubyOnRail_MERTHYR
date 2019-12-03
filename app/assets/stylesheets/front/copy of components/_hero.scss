@@ -1,0 +1,238 @@
+#hero-full, #hero-banner, #hero-slider{
+	.content-padding{
+		padding: 2rem 0;
+		@include breakpoint(medium){
+			padding: 4rem 0;
+		}
+		.content-padding{
+			padding: 1rem 0;
+			&:last-child{
+				padding: 1rem 0 0 0;
+			}
+			&:first-child{
+				padding: 0 0 1rem 0;
+			}
+			&:first-child:last-child, &:only-child{
+				padding: 0;
+			}
+			@include breakpoint(medium){
+				padding: 1.5rem 0;
+				&:last-child{
+					padding: 1.5rem 0 0 0;
+				}
+				&:first-child{
+					padding: 0 0 1.5rem 0;
+				}
+				&:first-child:last-child, &:only-child{
+					padding: 0;
+				}
+			}
+		}
+	}
+}
+
+#hero-full, #hero-banner{
+	height: 100%;
+	width: 100%;
+	background-position: center;
+	background-size: cover;
+	display: block;
+	position: relative;
+	overflow: hidden;
+	.overlay{
+		width: 100%;
+		height: 100%;
+		background-color: transparent;
+		background-image: url('');
+		background-position: center;
+		background-repeat: repeat;
+		background-attachment: fixed;
+		display: block;
+		position: absolute;
+		z-index: 2;
+		opacity: 0.5;
+	}
+	.banner-content{
+		width: 100%;
+		height: 100%;
+		min-height: calc(100vh - 100px);
+		display: flex;
+		align-items: center;
+		position: relative;
+		z-index: 3;
+		@include breakpoint(medium){
+			min-height: calc(100vh - 100px);
+		}
+		@include headings(){
+			font-size: 3rem;
+			text-transform: uppercase;
+			color: $secondary-color;
+			line-height: 1;
+			text-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+			@include breakpoint(medium){
+				font-size: 3.75rem;
+			}
+		}
+		.content-wrap{
+			width: 100%;
+			max-width: 90%;
+			margin: 2.5rem auto;
+			padding: 1rem;
+			background-color: rgba(0, 0, 0, 0.5);
+			display: block;
+			position: relative;
+			@include breakpoint(medium){
+				max-width: 60%;
+			}
+		}
+		p{
+			margin-bottom: 0.625rem;
+			font-size: 1.3125rem;
+			font-weight: bold;
+			line-height: 1;
+			color: $white;
+			text-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+			@include breakpoint(medium){
+				font-size: 1.5rem;
+			}
+			&.sub-heading{
+				font-family: $header-font-family;
+				text-transform: uppercase;
+				color: $secondary-color;
+			}
+		}
+		.button{
+			margin-top: 2rem;
+			font-weight: bold;
+			@include box-shadow(0 0 8px rgba(255, 255, 255, 0.25));
+		}
+		.input-group{
+			button, .button{
+				margin:0;
+			}
+		}
+	}
+}
+
+#hero-banner{
+	.banner-content{
+		height: 100%;
+		min-height: calc(50vh);
+		@include breakpoint(medium){
+			min-height: calc(50vh);
+		}
+	}
+}
+
+.hero-banner-food{
+  background-image: image-url('front/food-and-drink.jpg');
+}
+
+.hero-banner-shopping{
+  background-image: image-url('front/placeholder-1.jpg');
+}
+
+.hero-banner-services{
+  background-image: image-url('front/placeholder-1.jpg');
+}
+
+.hero-banner-events{
+  background-image: image-url('front/events.jpg');
+}
+
+.hero-banner-deals{
+  background-image: image-url('front/placeholder-1.jpg');
+}
+
+#hero-slider{
+	.owl-dots{
+		width: 100%;
+		position: absolute;
+		bottom: 0.625rem;
+		@include breakpoint(medium){
+			bottom: 1rem;
+		}
+	}
+	.owl-nav{
+		display: none;
+	}
+	.item{
+		position: relative;
+	}
+	.overlay{
+		width: 100%;
+		height: 100%;
+		background-color: transparent;
+		background-image: url('');
+		background-position: center;
+		background-repeat: repeat;
+		background-attachment: fixed;
+		display: block;
+		position: absolute;
+		z-index: 2;
+		opacity: 1;
+	}
+	.slide-image{
+		width: 100%;
+		height: 100%;
+		display: block;
+		position: absolute;
+		z-index: -1;
+		img{
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+	.banner-content{
+		width: 100%;
+		height: 100%;
+		min-height: calc(100vh - 100px);
+		display: flex;
+		align-items: center;
+		position: relative;
+		z-index: 3;
+		@include breakpoint(medium){
+			height: 100%;
+			min-height: calc(100vh - 100px);
+		}
+		.content-wrap{
+			width: 100%;
+			max-width: 90%;
+			margin: 2.5rem auto;
+			padding: 1rem;
+			background-color: rgba(0, 0, 0, 0.5);
+			display: block;
+			position: relative;
+			@include breakpoint(medium){
+				max-width: 60%;
+			}
+		}
+		@include headings(){
+			font-size: 2.25rem;
+			text-transform: uppercase;
+			color: $primary-color;
+			line-height: 1;
+			text-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+			@include breakpoint(medium){
+				font-size: 3.75rem;
+			}
+		}
+		p{
+			margin: 0;
+			font-size: 1.3125rem;
+			font-weight: bold;
+			color: $white;
+			line-height: 1;
+			text-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+			@include breakpoint(medium){
+				font-size: 1.5rem;
+			}
+		}
+		.button{
+			margin-top: 2rem;
+			font-weight: bold;
+			@include box-shadow(0 0 8px rgba(255, 255, 255, 0.25));
+		}
+	}
+}

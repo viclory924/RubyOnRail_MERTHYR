@@ -1,0 +1,18 @@
+<section class="content-padding">
+	<div class="row content-padding">
+		<div class="column text-center medium-text-left">
+      		<h2>A-Z of <%= params[:query] %> businesses in Merthyr Tydfil Town Centre</h2>
+		</div>
+	</div>
+	<div id="infinite-list" class="row small-up-1 medium-up-3 content-padding" data-equalizer data-equalize-on="medium" data-equalize-by-row="true">
+	</div>
+ 	 <div id="infinite-loader" class="row content-padding">
+ 	 	<div class="column text-center">
+ 	 		<div class="button">loading...</div>
+ 	 	</div>
+ 	 </div>
+</section>
+
+<%= content_for :script do %>
+  <%= render 'pages/business_pagination_script' %>
+<% end %>

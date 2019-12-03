@@ -1,0 +1,79 @@
+<div id="hero-banner" style="background-image: url('<%= asset_path 'front/placeholder-1.jpg' %>');">
+	<div class="overlay"></div>
+	<div class="banner-content">
+		<div class="content-wrap">
+			<div class="row content-padding">
+				<div class="columns text-center">
+					<h1>Apply for your new We Love Merthyr loyalty card</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<section class="light-gray-bg content-padding">
+	<div class="row align-center">
+		<div class="medium-8 small-12 columns">
+			<div class="single-content-wrap">
+				<p>Enter your details below to order and register for the We Love Merthyr Loyalty Card. You'll also get the latest offers by email or sms.</p>
+				<%= form_for @subscriber, url: create_subscriber_path do |f| %>
+					<div class="row align-center">
+						<div class="medium-6 small-12 columns">
+              <%= f.text_field :first_name, required: true, placeholder: 'First Name' %>
+						</div>
+						<div class="medium-6 small-12 columns">
+              <%= f.text_field :last_name, required: true, placeholder: 'Surname' %>
+						</div>
+					</div>
+					<div class="row align-center">
+						<div class="medium-6 small-12 columns">
+              <%= f.email_field :email, required: true, placeholder: 'Email' %>
+						</div>
+						<div class="medium-6 small-12 columns">
+              <%= f.text_field :mobile, required: true, placeholder: 'Mobile' %>
+						</div>
+					</div>
+					<div class="row align-center">
+						<div class="medium-6 small-12 columns">
+              <%= f.text_field :postcode, required: true, placeholder: 'Postcode' %>
+            </div>
+						<div class="medium-6 small-12 columns">
+              <%= f.text_area :address, rows: 5, placeholder: 'Address' %>
+						</div>
+					</div>
+					<div class="row">
+						<div class="medium-12 small-12 column">
+							<fieldset class="card-options">
+								<div class="radio-group">
+                  <%= f.radio_button :order_card, 'true', :checked => true, class: 'radio-group-input'  %>
+									<span class="radio-group-label">I wish to order a loyalty card.</span>
+									<div class="check"></div>
+								</div>
+								<div class="radio-group">
+                  <%= f.radio_button :order_card, 'false', :checked => false, class: 'radio-group-input'  %>
+									<span class="radio-group-label">I want to register an existing loyalty card.</span>
+									<div class="check"></div>
+								</div>
+							</fieldset>
+						</div>
+					</div>
+					<div class="row align-center">
+						<div class="medium-12 small-12 columns">
+							<div class="checkbox-group">
+								<input class="checkbox-group-input" required="" type="checkbox">
+								<span class="checkbox-group-label">By submitting your details you are agreeing with our <a class="underline" href="http://www.welovemerthyr.co.uk/public/pages/privacy-policy">privacy policy</a>.</span>
+								<div class="check"></div>
+							</div>
+						</div>
+					</div>
+					<div class="row align-left">
+						<div class="medium-6 small-12 columns">
+							<button type="submit" class="button expanded no-margin">Apply</button>
+						</div>
+					</div>
+        <%- end -%>
+			</div>
+		</div>
+	</div>
+</section>

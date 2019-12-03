@@ -1,0 +1,32 @@
+<div id="hero-banner" class="hero-banner-shopping">
+	<div class="overlay"></div>
+	<div class="banner-content">
+		<div class="content-wrap">
+			<div class="row content-padding">
+				<div class="column text-center">
+					<div class="row">
+						<div class="columns text-center">
+							<h1><%= @page_title %></h1>
+							<p>Merthyr Tydfil has much to offer the eager shopper with an excellent range of national stores and smaller independent shops and businesses</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="small-12 medium-12 column text-center">
+							<p class="sub-heading">Find a product, service or shop</p>
+							<%= form_tag public_businesses_search_path, method: 'get', style: 'background: transparent;' do -%>
+								<div class="input-group">
+									<input name="query" class="input-group-field" type="text" placeholder="Search">
+									<div class="input-group-button">
+										<input type="submit" class="button" value="Go">
+									</div>
+								</div>
+							<%- end -%>
+							<p>or browse our shops below</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

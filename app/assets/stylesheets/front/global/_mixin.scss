@@ -1,0 +1,110 @@
+@mixin transform($args) {
+	-moz-transform: $args;
+	-o-transform: $args;
+	-ms-transform: $args;
+	-webkit-transform: $args;
+	transform: $args;
+}
+
+@mixin translate($args) {
+	-moz-transform: translate($args);
+	-o-transform: translate($args);
+	-ms-transform: translate($args);
+	-webkit-transform: translate($args);
+	transform: translate($args);
+}
+
+@mixin translateX($args){
+	-webkit-transform: translateX($args);
+	-moz-transform: translateX($args);
+	-ms-transform: translateX($args);
+	-o-transform: translateX($args);
+	transform: translateX($args);
+}
+
+@mixin translateY($args){
+	-webkit-transform: translateY($args);
+	-moz-transform: translateY($args);
+	-ms-transform: translateY($args);
+	-o-transform: translateY($args);
+	transform: translateY($args);
+}
+
+@mixin translateZ($args){
+	-webkit-transform: translateZ($args);
+	-moz-transform: translateZ($args);
+	-ms-transform: translateZ($args);
+	-o-transform: translateZ($args);
+	transform: translateZ($args);
+}
+
+@mixin rotate($args){
+	-webkit-transform: rotate($args);
+	-moz-transform: rotate($args);
+	-ms-transform: rotate($args);
+	-o-transform: rotate($args);
+	transform: rotate($args);
+}
+
+@mixin transition($args) {
+	-webkit-transition: $args;
+	-moz-transition: $args;
+	-o-transition: $args;
+	transition: $args;
+}
+
+@mixin transition-property($args) {
+    -moz-transition-property: $args;
+    -o-transition-property: $args;
+    -webkit-transition-property: $args;
+    transition-property: $args;
+}
+
+@mixin transition-duration($args) {
+    -moz-transition-duration: $args;
+    -o-transition-duration: $args;
+    -webkit-transition-duration: $args;
+    transition-duration: $args;
+}
+
+@mixin transition-timing-function($args) {
+    -moz-transition-timing-function: $args;
+    -o-transition-timing-function: $args;
+    -webkit-transition-timing-function: $args;
+    transition-timing-function: $args;
+}
+
+@mixin transition-delay($args) {
+    -moz-transition-delay: $args;
+    -o-transition-delay: $args;
+    -webkit-transition-delay: $args;
+    transition-delay: $args;
+}
+
+@mixin box-shadow($args){
+	-webkit-box-shadow: $args;
+	-moz-box-shadow: $args;
+	box-shadow: $args;
+}
+
+@mixin clip-path($args){
+	-webkit-clip-path: $args;
+	-moz-clip-path: $args;
+	clip-path: $args;
+}
+
+@mixin headings($from: 1, $to: 6){
+    @for $i from $from through $to{
+      h#{$i}{
+        @content
+      }
+    }
+}
+
+@mixin inputs(){
+	input{
+		&[type="text"], &[type="password"], &[type="date"], &[type="datetime"], &[type="datetime-local"], &[type="month"], &[type="week"], &[type="email"], &[type="number"], &[type="search"], &[type="tel"], &[type="time"], &[type="url"], &[type="color"]{
+			@content
+		}
+	}
+}

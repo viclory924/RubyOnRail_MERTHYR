@@ -1,0 +1,72 @@
+<div class="row animated fadeInUp">
+  <div class="col-sm-12">
+    <div class="panel">
+      <div class="panel-content">
+        <div class="row">
+          <div class="col-md-12">
+            <%= simple_form_for @post, html: { class: 'form-horizontal'}, defaults: { input_html: { class: 'form-control' }} do |f| %>
+              <div class="form-group">
+                <label for="title" class="col-sm-3 control-label">Title<span class="require">*</span></label>
+                <div class="col-sm-6">
+                  <%= f.input :title, label: false %>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="category" class="col-sm-3 control-label">Category</label>
+                <div class="col-sm-6">
+                  <%= f.input :category, collection: Post::CATEGORIES, include_blank: true, prompt: 'Please select', label: false -%>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="body" class="col-sm-3 control-label">Body</label>
+                <div class="col-sm-6">
+                  <%= f.input :body, as: :text, input_html: { class: 'my_tinymce' }, label: false -%>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="status" class="col-sm-3 control-label">Status</label>
+                <div class="col-sm-6">
+                  <%= f.input :status, collection: Post::STATUSES, include_blank: false, label: false %>
+                </div>
+              </div>
+              <%- if @post.image.present? -%>
+                <div class="form-group">
+                  <label for="cofirmation" class="col-sm-3 control-label">Confirmation<span class="required">*</span></label>
+                  <div class="col-sm-6">
+                    <%= image_tag @post.image_url(:admin_thumb) -%>
+                  </div>
+                </div>
+                <div class='form-group'>
+                  <label class="col-lg-2 control-label" for="post_remove_image"></label>
+                  <div class="col-lg-10">
+                    <div class="checkbox">
+                      <input type="checkbox" id="post_remove_image" name="post[remove_image]" class="boolean optional" value="1" />
+                      <label for="post_remove_image">Remove image</label>
+                    </div>
+                  </div>
+                </div>
+              <% end %>  
+              <div class="form-group">
+                <label for="image" class="col-sm-3 control-label">Image</label>
+                <div class="col-sm-6">
+                  <%= f.input :image, label: false -%>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="image_mode" class="col-sm-3 control-label">Image Mode</label>
+                <div class="col-sm-6">
+                  <%= f.input :image_mode, as: :radio_buttons, collection: IMAGE_MODES, include_blank: false, label_method: :capitalize, input_html: { class: 'radio_buttons optional'}, label: false -%>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-9">
+                  <%= f.button :submit, class: 'btn-primary' %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

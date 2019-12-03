@@ -1,0 +1,32 @@
+@include headings(){
+	width: 100%;
+	color: $primary-color;
+	display: block;
+}
+
+.lead{
+	font-weight: bold;
+	line-height: 1.4;
+}
+
+.large-text{
+	font-size: 1rem;
+	line-height: 1.4;
+	@include breakpoint(medium){
+		font-size: 1.3125rem;
+	}
+}
+
+a{
+	&.secondary{
+		color: $secondary-color;	
+	}
+}
+
+.underline{
+	text-decoration: underline;
+}
+
+.no-margin{
+	margin: 0;
+}

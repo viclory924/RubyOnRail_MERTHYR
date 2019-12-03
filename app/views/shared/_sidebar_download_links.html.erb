@@ -1,0 +1,27 @@
+<%- downloads = Download.desc(:created_at).desc(:id) -%>
+
+<button id="select-category-btn" class="button expanded" type="button" data-toggle="download-dropdown">Select Category</button>
+<div class="dropdown-pane" data-position="right" data-alignment="bottom" id="download-dropdown" data-dropdown data-auto-focus="true">
+  <ul class="menu vertical">
+    <li><a href="#" class="events"><i class="fa fa-calendar"></i><span>Events &amp; Marketing</span></a></li>
+    <li><a href="#" class="reports"><i class="fa fa-file-o"></i><span>Reports</span></a></li>
+    <li><a href="#" class="newsletters"><i class="fa fa-newspaper-o"></i><span>Newsletters</span></a></li>
+    <li><a href="#" class="general"><i class="fa fa-bell-o"></i><span>General</span></a></li>
+  </ul>
+</div>
+
+<div id="downloadlist">
+  <div class="list-group download_links">
+    <%- if downloads.any? -%>
+      <%- downloads.each do |d| -%>
+        <a href="<%= d.file.url -%>" class="list-group-item <%= !d.category.blank? ? d.category.downcase.tr(" ", '_') : nil -%>">
+          <span class="title"><%= d.title -%></span>
+        </a>
+      <%- end -%>
+    <%- else -%>
+      <%= link_to '#', class: 'list-group-item' do -%>
+          <span class="title"> No files. </span>
+      <%- end -%>
+    <%- end -%>
+  </div>
+</div>

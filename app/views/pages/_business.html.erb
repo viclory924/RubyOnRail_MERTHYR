@@ -1,0 +1,27 @@
+<div class="column">
+  <div class="card-wrap">
+    <div class="card" data-equalizer-watch>
+      <a href="<%= public_business_path(business) %>" class="card-image">
+        <div class="overlay secondary">
+          <div class="link-icon"><i class="fa fa-link"></i></div>
+        </div>
+        <%= image_tag(business.photo_url(:f_small)) %>
+      </a>
+      <div class="card-content">
+        <a href="<%= public_business_path(business) %>"><h3 class="card-title"><%= business.name -%></h3></a>
+        <%- unless business.full_address.blank? -%>
+          <p class="card-address"><%= business.full_address -%></p>
+        <%- end -%>
+        <ul>
+          <%- unless business.telephone.blank? -%>
+          <li><a href="tel:<%= business.telephone -%>" class="button secondary "><i class="fa fa-phone"></i><%= business.telephone -%></a></li>
+          <%- end -%>
+          <%- unless business.website.blank? -%>
+            <li><a href="<%= business.website -%>" target="_blank" class="button secondary "><i class="fa fa-globe"></i>Visit Website</a></li>
+          <%- end -%>
+        </ul>
+      </div>
+      <%= link_to 'View Listing', public_business_path(business), class: 'card-link' -%>
+    </div>
+  </div>
+</div>

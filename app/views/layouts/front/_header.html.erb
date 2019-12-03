@@ -1,0 +1,57 @@
+<div id="loader-wrapper">
+	<div id="loader"></div>
+</div>
+<div class="off-canvas-wrapper">
+	<div id="offCanvas" class="off-canvas position-right" data-off-canvas>
+    <%= render 'layouts/front/navigation' %>
+	</div>
+	<div class="off-canvas-content" data-off-canvas-content>
+		<div class="content-wrap" data-sticky-container>
+			<div class="top-bar sticky" data-sticky data-margin-top="0" data-options="stickyOn: small">
+				<div class="row align-middle small-collapse medium-uncollapse">
+					<div class="large-6 medium-6 small-12 columns text-center medium-text-left">
+						<a href="/" class="logo">
+              <%= image_tag 'front/logo.png' %>
+							<!--<p>Home of Merthyr Tydfil Town Centre</p>-->
+						</a>
+					</div>
+					<div class="large-6 medium-6 small-12 columns">
+						<nav id="navigation">
+							<ul>
+                <li>
+                  <%= link_to public_businesses_category_path(Business::CATEGORIES[0]) do %>
+                    <i class="fa fa-shopping-bag"></i>
+                    <span>Shopping</span>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to public_businesses_category_path(Business::CATEGORIES[1]) do %>
+                    <i class="fa fa-coffee"></i>
+                    <span>Food</span>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to public_businesses_category_path(Business::CATEGORIES[2]) do %>
+                    <i class="fa fa-shopping-basket"></i>
+                    <span>Services</span>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to public_events_path do %>
+                    <i class="fa fa-calendar"></i>
+                    <span>Events</span>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to public_vouchers_path do %>
+                    <i class="fa fa-tag"></i>
+                    <span>Deals</span>
+                  <% end %>
+                </li>
+								<li><a class="menu-toggle" data-toggle="offCanvas"><i class="fa fa-navicon"></i><span>Menu</span></a></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div><!-- .content-wrap -->

@@ -1,0 +1,56 @@
+<div class="content">
+  <!-- content HEADER -->
+  <!-- ========================================================= -->
+  <div class="content-header">
+    <!-- leftside content header -->
+    <div class="leftside-content-header">
+      <ul class="breadcrumbs">
+        <li><i class="fa fa-columns" aria-hidden="true"></i><a href="#">Sliders</a></li>
+        <li><a>Show</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="row animated fadeInRight">
+    <div class="col-sm-12">
+      <% unless notice.blank? %>
+        <p id="notice" class="alert alert-success"><%= notice %></p>
+      <% end %>
+      <div class="panel">
+        <div class="panel-content">
+          <div class="table-responsive">            
+            <p>
+              <b>Image:</b>
+              <%= image_tag @slider.image_url(:admin_thumb) %>
+            </p>
+            <p>
+              <b>Header:</b>
+              <%= @slider.header %>
+            </p>
+            <p>
+              <b>Caption:</b>
+              <%= @slider.caption %>
+            </p>
+            <p>
+              <b>Visible:</b>
+              <%= @slider.visible?? 'Yes' : 'No' %>
+            </p>
+            <p>
+              <b>Order:</b>
+              <%= @slider.order %>
+            </p>
+            <p>
+              <b>Button title:</b>
+              <%= @slider.button_title %>
+            </p>
+            <p>
+              <b>URL:</b>
+              <%= @slider.url %>
+            </p>
+            <%= link_to 'Edit', edit_slider_path(@slider) %> |
+            <%= link_to 'Back', sliders_path %>
+          </div>
+        </div>
+      </div>
+    </div> 
+  </div> 
+</div>

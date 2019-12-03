@@ -1,0 +1,39 @@
+<!--<%#- if user_signed_in? -%>
+  <li> <%#= link_to current_user.email, '#' -%> </li>
+  <li> <%#= link_to 'Log out', destroy_user_session_path, method: :delete -%> </li>
+<%#- else -%>
+  <li> <%#= link_to 'Log in', new_user_session_path -%> </li>
+  <li> <%#= link_to 'Sign up', new_user_registration_path -%> </li>
+<%#- end -%> -->
+
+<div class="container nav">
+  <div class="navbar navbar-inverse navbar-default">
+    <div class="navbar-inner">
+        <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <div class="collapse navbar-collapse">
+          <ul class="social_icon_top">
+            <li><a href="https://www.facebook.com/welovemerthyr" target="blank"><span class="facebook"></span></a></li>
+            <li><a href="https://twitter.com/welovemerthyr" target="blank"><span class="twitter"></span></a></li>
+            <li><a href="http://www.youtube.com/channel/UC4sPgGf_GHIudlYmIY0OkxQ" target="blank"><span class="youtube"></span></a></li>
+            <li><a href="http://www.pinterest.com/welovemerthyr" target="blank"><span class="pinterest"></span></a></li>
+            <li><a href="https://plus.google.com/117343593071344088996" target="blank"><span class="google-plus"></span></a></li>
+          </ul>
+          <ul class="nav navbar-nav">
+            <li class="<%= 'active' if controller_name == 'pages' and action_name == 'front' -%>"><%= link_to 'Home', root_path -%></li>
+            <li class="<%= 'active' if controller_name == 'pages' and %w(businesses_category business).include?(action_name) and [params[:cat], @business.try(:category)].include?(Business::CATEGORIES[0]) -%>"><%= link_to 'Shopping', public_businesses_category_path(Business::CATEGORIES[0]) -%><li>
+            <li class="<%= 'active' if controller_name == 'pages' and %w(businesses_category business).include?(action_name) and [params[:cat], @business.try(:category)].include?(Business::CATEGORIES[1]) -%>"><%= link_to 'Eating & Drinking', public_businesses_category_path(Business::CATEGORIES[1]) -%><li>
+            <li class="<%= 'active' if controller_name == 'pages' and %w(businesses_category business).include?(action_name) and [params[:cat], @business.try(:category)].include?(Business::CATEGORIES[2]) -%>"><%= link_to 'Services', public_businesses_category_path(Business::CATEGORIES[2]) -%><li>
+            <li class="<%= 'active' if controller_name == 'pages' and %w(visiting guides).include?(action_name) -%>"><%= link_to 'Visiting ', public_visiting_path -%><li>
+            <li class="<%= 'active' if controller_name == 'pages' and %w(vouchers voucher).include?(action_name) -%>"><%= link_to 'Loyalty Card', public_vouchers_path -%></li>
+            
+            <li class="<%= 'active' if controller_name == 'pages' and %w(events event).include?(action_name) -%>"><%= link_to 'Events', public_events_path -%></li>
+            <li class="<%= 'active' if controller_name == 'pages' and %w(blog blog_post).include?(action_name) -%>"><%= link_to 'News', blog_path -%><li>
+          </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+  </div>
+</div>

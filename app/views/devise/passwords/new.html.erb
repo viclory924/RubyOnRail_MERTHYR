@@ -1,0 +1,39 @@
+<div class="content">
+  <div class="content-header" style="background-color: #ececec">
+
+  </div>
+  <div class="left-sidebar col-sm-6" style="background-color: #ececec"></div>
+  <div class="row animated fadeInUp">
+    <div class="col-sm-8">
+      <h4 class="section-subtitle"><b>Forgot Password</b></h4>
+      <div class="panel">
+        <div class="panel-content">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="panel-body">
+                <%= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }, html: { class: 'form-horizontal' }, defaults: { input_html: { class: 'form-control' }}) do |f| %>
+                   <div class="form-inputs">
+                    <div class="form-group">
+                      <label for="email" class="col-sm-3 control-label">Email<span class="require">*</span></label>
+                      <div class="col-sm-6">
+                          <%= f.input :email, :required => true, :autofocus => true, label: false %>
+                      </div>
+                    </div>
+                    
+                    <div class="form-group">
+                      <div class="col-sm-offset-3 col-sm-9">
+                        <%= f.button :submit, "Send me reset password instructions", class: 'btn-primary' %>
+                        <br />
+                        <%= render "devise/shared/links" %>
+                      </div>
+                    </div>
+                  </div> 
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>  
+    </div>
+  </div>
+</div>

@@ -1,0 +1,61 @@
+<%= content_for :bread_crumbs do -%>
+  <div class="dow">
+    <div class="col-lg-8 content">
+      <div class="bread_crumbs">
+        <%= link_to 'Home', front_path -%> > Deals
+      </div>
+      <h1 class="red">Deals available with your Loyalty Card</h1>
+      <div class="vouchers">
+        <ul class="vouchers_list">
+          <%- @deals.each do |deal| -%>
+            <li>
+              <div>
+                <div class="col-lg-9">
+                  <h4><%= link_to deal.title, public_voucher_path(deal) -%></h4>
+                  <p>
+                    <%= link_to deal.business.name, public_business_path(deal.business), class: 'blue under' -%>,
+                    <%= deal.business.full_address -%>
+                  </p>
+                  <p class="voucher_expires">Voucher expires: <%= deal.end_date.try(:strftime, "#{deal.end_date.try(:day).try(:ordinalize)} %B %Y") -%></p>
+                  <div class="share_via">
+                    <p>Share via:</p>
+                    <div>
+                      <!-- AddThis Button BEGIN -->
+                      <div class="addthis_toolbox addthis_default_style ">
+                        <span style="float:left"> <fb:like href="<%= public_voucher_url(deal) -%>" layout="button_count" action="like" show_faces="false"></fb:like></span>
+                        <!--<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>-->
+                        <a class="addthis_button_tweet" style="width:80px"></a>
+                        <a class="addthis_button_pinterest_pinit" style="width:50px" pi:pinit:layout="horizontal"></a>
+                        <a class="addthis_counter addthis_pill_style"></a>
+                      </div>
+                      <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+                      <script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-526e92c31dafd4cc"></script>
+                      <!-- AddThis Button END -->
+                      <div class="clearfix"></div>
+                    </div>
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="col-lg-3 claim_voucher">
+                  
+                </div>
+              </div>
+            </li>
+          <%- end -%>
+        </ul>
+        <ul class="pagination">
+          <%= paginate @deals -%>
+        </ul>
+      </div>
+    </div>
+    <br>
+    <div class="col-lg-4 col-md-4">
+      <div style="background-color: #E84530;padding: 1em;">       
+        <h1 style="color: whitesmoke;">Do you have a loyalty card?</h1>
+        <hr style="border-color: white;">
+        <p style="font-size: 23px;font-weight: 700;color: whitesmoke;">You can order or register your loyalty card by clicking on the link below:</p>
+        <a href="<%= public_new_subscriber_path -%>" class="btn-default btn-lg btn-block" style="text-align: center;color: #f94623;font-size: 23px;">Sign Up/ Register</a>
+      </div>     
+    </div>
+  </div>
+<%- end -%>

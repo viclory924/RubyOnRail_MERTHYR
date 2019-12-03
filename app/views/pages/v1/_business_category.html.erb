@@ -1,0 +1,30 @@
+<li>
+  <h4><%= link_to business_category.name, public_business_path(business_category) -%></h4>
+
+  <div class="info">
+    <p><%= business_category.full_address -%></p>
+    <div class="tel"><%= business_category.telephone -%></div>
+    <div class="url"><a href="<%= business_category.website -%>" target="_blank"><%= business_category.website -%></a></div>
+    <div class="clear"></div>
+  </div>
+
+<div class="white_block">
+    <!--<div class="col-lg-8">-->
+      <!--<a href="#" >< %= business_category.profile.html_safe || "&nbsp;"-%></a>-->
+    <!--</div>-->
+<div class="b-share_links col-lg-5">
+      <!-- AddThis Button BEGIN -->
+<div class="addthis_toolbox addthis_default_style ">
+        <span style="float:left"> <fb:like href="<%= public_business_url(business_category) -%>" layout="button_count" action="like" show_faces="false"></fb:like></span>
+        <!--<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>-->
+ <a class="addthis_button_tweet" style="width:80px"></a>
+        <a class="addthis_button_pinterest_pinit" style="width:50px" pi:pinit:layout="horizontal"></a>
+        <a class="addthis_counter addthis_pill_style"></a>
+      </div>
+      <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+      <script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-526e92c31dafd4cc"></script>
+      <!-- AddThis Button END -->
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</li>

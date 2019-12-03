@@ -1,0 +1,83 @@
+//@import "twitter/bootstrap/bootstrap";
+//@import "twitter/bootstrap/responsive";
+
+// Set the correct sprite paths
+//@iconSpritePath: asset-path("twitter/bootstrap/glyphicons-halflings");
+//@iconWhiteSpritePath: asset-path("twitter/bootstrap/glyphicons-halflings-white");
+
+// Set the Font Awesome (Font Awesome is default. You can disable by commenting below lines)
+//@fontAwesomeEotPath: asset-url("fontawesome-webfont.eot");
+//@fontAwesomeEotPath_iefix: asset-url("fontawesome-webfont.eot#iefix");
+//@fontAwesomeWoffPath: asset-url("fontawesome-webfont.woff");
+//@fontAwesomeTtfPath: asset-url("fontawesome-webfont.ttf");
+//@fontAwesomeSvgPath: asset-url("fontawesome-webfont.svg#fontawesomeregular");
+
+// Font Awesome
+//@import "fontawesome/font-awesome";
+
+// Glyphicons
+//@import "twitter/bootstrap/sprites.less";
+
+// Your custom LESS stylesheets goes here
+//
+// Since bootstrap was imported above you have access to its mixins which
+// you may use and inherit here
+//
+// If you'd like to override bootstrap's own variables, you can do so here as well
+// See http://twitter.github.com/bootstrap/customize.html#variables for their names and documentation
+//
+// Example:
+// @linkColor: #ff0000;
+
+#map label { width: auto; display:inline; }
+#map img { max-width: none; }
+
+#update-guides-form {
+  label {
+    font-size: 13px;
+    color: #666;
+  }
+  input[type=checkbox] {
+    margin: 0;
+    width: auto;
+  }
+}
+
+#download-guides {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.widget_search {
+  .input-group {
+    width: 100%;
+
+    #sidebar-search {
+      .form-control {
+        border-radius: 6px 0 0 6px;
+        display: inline-block;
+        width: 80%;
+      }
+
+      .input-group-btn {
+        vertical-algin: top;
+        display: inline-block;
+        width: auto;
+        margin-left: -3px;
+      }
+    }
+  }
+}
+
+a:hover > .iview-caption {
+  cursor: pointer;
+}
+
+.panel-subscribe-img {
+  background-color: #a8c73d;
+  border: medium none;
+  font-weight: 900;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+  text-align: center;
+}

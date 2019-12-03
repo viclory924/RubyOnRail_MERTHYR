@@ -1,0 +1,19 @@
+<div class="content">
+  <h4 class="section-subtitle"><b>Edit</b> Deal</h4>
+  <!-- content HEADER -->
+  <!-- ========================================================= -->
+  <div class="content-header">
+   <!-- leftside content header -->
+    <div class="leftside-content-header">
+     <ul class="breadcrumbs">
+       <li><i class="fa fa-columns" aria-hidden="true"></i><a href="#">Deal</a> <a href="#">Edit</a></li>
+     </ul>
+    </div>
+  </div>
+
+  <%= render partial: 'form', locals: { business_id: @business_id || nil } %>
+
+  <%= link_to 'Show', @deal %> |
+  <%= link_to 'Back', deals_path %>
+</div>
+

@@ -1,0 +1,502 @@
+.latest{
+	margin-bottom: 1rem;
+	border-radius: 0.1875rem;
+	background: $white;
+	display: block;
+	position: relative;
+	overflow: hidden;
+	@include box-shadow(0 0 16px rgba(72, 82, 83, 0.25));
+	.card-title{
+		margin: 0;
+		padding: 1rem;
+		font-size: 1.5rem;
+		line-height: 1;
+		color: $white;
+		text-align: center;
+		background-color: $cool-gray-2;
+	}
+	.card-content{
+		padding: 1rem;
+		>*{
+			&:last-child{
+				margin-bottom: 0;
+			}
+		}
+		.button{
+			margin: 0;
+			padding: 0.4375rem 1rem;
+			font-size: 1rem;
+			display: inline-block;
+			i{
+				margin-right: 0.625rem;
+			}
+		}
+	}
+	.card-button{
+		width: 100%;
+		padding: 1rem;
+		font-size: 1.125rem;
+		font-weight: bold;
+		color: $white;
+		text-align: center;
+		line-height: 1;
+		border-top: 0.0625rem solid $cool-gray-2;
+		background-color: $cool-gray-3;
+		display: block;
+		position: relative;
+		bottom: 0;
+		&:hover{
+			background-color: $cool-gray-2;
+		}
+	}
+	&.primary{
+		.card-title{
+			background-color: $primary-color;
+		}
+		.card-button{
+			border-top-color: $primary-color;
+			&:hover{
+				background-color: $primary-color;
+			}
+		}
+	}
+	&.secondary{
+		.card-title{
+			background-color: $secondary-color;
+		}
+		.card-button{
+			border-top-color: $secondary-color;
+			&:hover{
+				background-color: $secondary-color;
+			}
+		}
+	}
+	&.tertiary{
+		.card-title{
+			background-color: $tertiary-color;
+		}
+		.card-button{
+			border-top-color: $tertiary-color;
+			&:hover{
+				background-color: $tertiary-color;
+			}
+		}
+	}
+}
+
+.tag-cloud{
+	padding: 1rem;
+	border-radius: 0.1875rem;
+	@include box-shadow(0 0 16px rgba(0, 0, 0, 0.1));
+	overflow: hidden;
+	.tag-item{
+		margin: 0 0.625rem 0.625rem 0rem;
+		padding: 0.5rem 2rem;
+		font-size: 0.875rem;
+		font-weight: bold;
+		line-height: 1;
+		text-align: center;
+		color: $white;
+		background-color: $primary-color;
+		border-radius: 0.1875rem;
+		display: inline-block;
+		float: left;
+		overflow: hidden;
+		&:hover{
+			color: $white;
+			border-color: scale-color($primary-color, $lightness: -14%);;
+			background: scale-color($primary-color, $lightness: -14%);;
+		}
+		&:last-child{
+			margin: 0 0 0.625rem 0;
+		}
+		&.secondary{
+			color: $white;
+			background-color: $secondary-color;
+			&:hover{
+				color: $white;
+				border-color: scale-color($secondary-color, $lightness: -14%);;
+				background: scale-color($secondary-color, $lightness: -14%);;
+			}
+		}
+		&.tertiary{
+			color: $white;
+			background-color: $tertiary-color;
+			&:hover{
+				color: $white;
+				background: scale-color($tertiary-color, $lightness: -14%);;
+			}
+		}
+		&.quadary{
+			color: $white;
+			background-color: $quadary-color;
+			&:hover{
+				color: $white;
+				background: scale-color($quadary-color, $lightness: -14%);;
+			}
+		}
+	}
+}
+
+.card-sizer, .card-wrap{
+	width: 100%;
+	@include breakpoint(medium){
+		width: 100%;
+	}
+}
+
+.card-wrap{
+	padding-bottom: 1.875rem;
+	.card{
+		margin: 0;
+		padding: 0 auto 1.875rem;
+		border: none;
+		border-radius: 0.1875rem;
+		background: $white;
+		display: block;
+		position: relative;
+		overflow: hidden;
+		@include box-shadow(0 0 16px rgba(0, 0, 0, 0.1));
+		.card-image{
+			width: 100%;
+			height: 15rem;
+			display: block;
+			position: relative;
+			overflow: hidden;
+			img{
+				width: 100%;
+				height: 100%;
+				display: block;
+				position: absolute;
+				object-fit: cover;
+				object-fit: center;
+			}
+			.discount-wrap{
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0, 186, 214, 0.8);
+				display: block;
+				position: absolute;
+				z-index: 3;
+				.discount{
+					color: $white;
+					text-align: center;
+					position: relative;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+					p{
+						margin: 0;
+						font-family: $body-font-family;
+						font-size: 1.875rem;
+						font-weight: bold;
+						line-height: 0.8;
+						text-transform: uppercase;
+						text-align: center;
+						color: $white;
+						&.percentage{
+							font-family: $header-font-family;
+							font-size: 3.75rem;
+							font-weight: 900;
+						}
+					}
+				}
+			}
+			.overlay{
+				width: 100%;
+				height: 100%;
+				display: block;
+				position: absolute;
+				z-index: 3;
+				opacity: 0;
+				@include transition(all 0.25s ease-in-out);
+				.link-icon{
+					width: 1.875rem;
+					height: 1.875rem;
+					border-radius: 999rem;
+					background-color: $cool-gray-4;
+					display: table;
+					position: relative;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+					overflow: hidden;
+					@include transition(all 0.25s ease-in-out);
+					i{
+						font-size: 0.875rem;
+						line-height: 1;
+						text-align: center;
+						vertical-align: middle;
+						display: table-cell;
+						@include transition(all 0.25s ease-in-out);
+					}
+				}
+			}
+		}
+		.card-content{
+			margin: 1rem 1rem 4.1875rem 1rem;
+			color: $cool-gray-1;
+			display: inline-table;
+			position: relative;
+			.card-title{
+				margin: 0;
+				font-family: $header-font-family;
+				font-size: 1.125rem;
+				line-height: 1.2;
+				color: $secondary-color;
+				@include breakpoint(medium){
+					font-size: 1.3125rem;
+				}
+				&.event{
+					margin: 0 0 0.625rem 0;
+				}
+			}
+			p{
+				margin: 0 0 1rem 0;
+				&.deal-experation{
+					margin: 0 0 0.625rem 0;
+					color: $tertiary-color;
+				}
+				&.card-address{
+					font-weight: bold;
+				}
+			}
+			.button{
+				margin: 0 0 1rem 0;
+				padding: 0.4375rem 1rem;
+				font-size: 1rem;
+				display: inline-block;
+				i{
+					margin-right: 0.625rem;
+				}
+			}
+			ul,
+			ul li{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				display: block;
+				position: relative;
+			}
+			ul li{
+				margin: 0 0 0.625rem 0;
+				&:last-child{
+					margin: 0;
+				}
+				.button{
+					margin: 0;
+					padding: 0.4375rem 1rem;
+					font-size: 1rem;
+					display: inline-block;
+					i{
+						margin-right: 0.625rem;
+					}
+				}
+			}
+			.buttons{
+				width: 100%;
+				display: flex;
+				position: relative;
+				.button{
+					width: 100%;
+					margin: 0 0.625rem 0 0;
+					padding: 0.375rem;
+					font-size: 0.875rem;
+					font-weight: normal;
+					flex: auto;
+					&:last-child{
+						margin: 0;
+					}
+					.button-inner{
+						display: flex;
+						align-items: center;
+	  					justify-content: center;
+						i{
+							margin-right: 0.625rem;
+							display: block;
+						}
+						span{
+							width: auto;
+							text-align: center;
+							display: block;
+						}
+					}
+				}
+			}
+			.post-meta{
+				margin-bottom: 1rem;
+				.post-meta-item{
+					margin-bottom: 0.625rem;
+					display: flex;
+					&:last-child{
+						margin: 0;
+					}
+					.icon{
+						width: 1.25rem;
+						height: 1.25rem;
+						margin-right: 0.625rem;
+						font-size: 0.875rem;
+						color: $white;
+						line-height: 1;
+						background-color: $secondary-color;
+						border-radius: 0.1875rem;
+						display: block;
+						position: relative;
+						overflow: hidden;
+						i{
+							position: absolute;
+							top: 50%;
+							left: 50%;
+							transform: translate(-50%, -50%);
+						}
+						&.primary{
+							background-color: $primary-color;
+						}
+						&.secondary{
+							background-color: $secondary-color;
+						}
+						&.tertiary{
+							background-color: $tertiary-color;
+						}
+					}
+					.text{
+						margin-top: 0.25rem;
+						line-height: 0;
+						flex: 1;
+						position: relative;
+						>*{
+							width: 100%;
+							margin: 0;
+							padding: 0;
+							font-size: 0.75rem;
+							font-weight: bold;
+							color: $cool-gray-1;
+							line-height: 1;
+						}
+					}
+				}
+			}
+			>*{
+				margin: 0 0 0.625rem 0;
+				&:last-child{
+					margin: 0;
+				}
+			}
+		}
+		.card-link{
+			width: 100%;
+			padding: 1rem;
+			font-size: 1.125rem;
+			font-weight: bold;
+			color: $white;
+			text-align: center;
+			line-height: 1;
+			border-top: 0.0625rem solid $secondary-color;
+			background-color: $cool-gray-3;
+			display: block;
+			position: absolute;
+			bottom: 0;
+			&:hover{
+				background-color: $secondary-color;
+			}
+		}
+		&:hover{
+			@include box-shadow(0 0 16px rgba(239, 79, 35, 0.25));
+			.card-image{
+				.overlay{
+					opacity: 1;
+				}
+			}
+		}
+		&.primary{
+			.card-content{
+				.card-title{
+					color: $primary-color;
+				}
+			}
+			.card-link{
+				border-top-color: $primary-color;
+				&:hover{
+					background-color: $primary-color;
+				}
+			}
+		}
+	}
+}
+
+.visiting-card{
+	width: 100%;
+	margin: 0 auto 1rem;
+	text-align: center;
+	background-color: $white;
+	border: 0.1875rem solid $primary-color;
+	border-radius: 0.1875rem;
+	display: block;
+	overflow: hidden;
+	@include transition(all .25s ease-in-out);
+	&:hover{
+		@include box-shadow(0 0 16px rgba(0, 0, 0, 0.25));
+		.image-wrap{
+			img{
+				transform: scale(1.1);
+			}
+		}
+	}
+	.card-title{
+		margin: 0;
+		padding: 0.75rem 1rem;
+		font-family: $body-font-family;
+		line-height: 1;
+		color: $white;
+		background-color: $primary-color;
+	}
+	.image-wrap{
+		min-height: 234px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		img{
+			@include transition(all .25s ease-in-out);
+		}
+	}
+	&.when{
+		border: 0.1875rem solid #2C3E50;
+		.card-title{
+			background-color: #2C3E50;
+		}
+	}
+	&.places{
+		border: 0.1875rem solid #16A085;
+		.card-title{
+			background-color: #16A085;
+		}
+	}
+	&.maps{
+		border: 0.1875rem solid $primary-color;
+		.card-title{
+			background-color: $primary-color;
+		}
+	}
+	&.parking{
+		border: 0.1875rem solid $secondary-color;
+		.card-title{
+			background-color: $secondary-color;
+		}
+	}
+	&.staying{
+		border: 0.1875rem solid $tertiary-color;
+		.card-title{
+			background-color: $tertiary-color;
+		}
+	}
+	&.getting{
+		border: 0.1875rem solid $cool-gray-1;
+		.card-title{
+			background-color: $cool-gray-1;
+		}
+	}
+}
+
+.download_links a{
+	margin-bottom: 2em;
+}

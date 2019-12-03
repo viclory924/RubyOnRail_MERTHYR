@@ -1,0 +1,54 @@
+<div class="content">
+  <!-- content HEADER -->
+  <!-- ========================================================= -->
+  <div class="content-header">
+    <!-- leftside content header -->
+    <div class="leftside-content-header">
+      <ul class="breadcrumbs">
+        <li><i class="fa fa-columns" aria-hidden="true"></i><a href="#">Posts</a></li>
+        <li><a>Show</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="row animated fadeInRight">
+    <div class="col-sm-12">
+      <% unless notice.blank? %>
+        <p id="notice" class="alert alert-success"><%= notice %></p>
+      <% end %>
+      <div class="panel">
+        <div class="panel-content">
+          <div class="table-responsive">            
+            <p>
+              <b>Title:</b>
+              <%= @post.title %>
+            </p>
+
+            <p>
+              <b>Body:</b>
+              <%= @post.body %>
+            </p>
+
+            <p>
+              <b>Status:</b>
+              <%= @post.status %>
+            </p>
+
+            <p>
+              <b>Published date:</b>
+              <%= @post.published_at %>
+            </p>
+
+            <p>
+              <b>Image mode:</b>
+              <%= @post.image_mode -%>
+            </p>
+
+
+            <%= link_to 'Edit', edit_post_path(@post) %> |
+            <%= link_to 'Back', posts_path %>
+          </div>
+        </div>
+      </div>
+    </div> 
+  </div> 
+</div>

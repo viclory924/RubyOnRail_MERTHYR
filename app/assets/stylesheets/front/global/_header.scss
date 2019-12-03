@@ -1,0 +1,53 @@
+.top-bar{
+	width: 100%;
+	max-width: 100% !important;
+	margin: 0;
+	padding: 0;
+	line-height: 0;
+	background: $primary-color;
+	@include breakpoint(medium){
+		padding: 1rem 0;
+	}
+	.logo{
+		height: auto;
+		margin: 0.5625rem auto;
+		font-size: 0.6875rem;
+		line-height: 1;
+		color: $white;
+		display: block;
+		@include transition(all 0.5s ease-in-out);
+		@include breakpoint(medium){
+			height: 100%;
+			float: left;
+		}
+		img{
+			height: 2.5rem;
+			margin-bottom: 0.1875rem;
+			@include transition(height 0.5s ease-in-out);
+			@include breakpoint(medium){
+				height: 3.125rem;
+			}
+		}
+		p{
+			margin: auto 0;
+			text-align: center;
+			line-height: 1;
+		}
+	}
+	&.is-stuck{
+		.logo{
+			height: 0;
+			margin: 0 auto;
+			@include breakpoint(medium){
+				height: auto;
+				margin: 0.5625rem auto;
+			}
+			img{
+				height: 0px;
+				@include breakpoint(medium){
+					height: 3.125rem;
+				}
+			}
+		}
+	}
+}

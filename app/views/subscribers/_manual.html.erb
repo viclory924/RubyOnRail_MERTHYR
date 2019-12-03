@@ -1,0 +1,18 @@
+<p> To claim your voucher enter your detail below or login using your Facebook credentials.  </p>
+
+<br />
+
+<%= simple_form_for object, url: subsribe_subscribers_path, html: { class: 'form-horizontal'}, defaults: { input_html: { class: 'form-control' }}, remote: true do |f| %>
+  <div class="form-inputs">
+    <%= f.input :first_name -%>
+    <%= f.input :last_name -%>
+    <%= f.input :email -%>
+    <%= f.input :deal_id, as: :hidden -%>
+  </div>
+
+  <div class="form-group">
+    <div class="col-lg-10 col-lg-offset-2">
+      <%= f.button :submit, 'Claim', class: 'btn-primary' %>
+    </div>
+  </div>
+<%- end -%>

@@ -1,0 +1,127 @@
+<%= content_for :bread_crumbs do -%>
+  <div class="dow">
+    <div class="col-lg-8 col-md-8 content">
+      <div class="bread_crumbs">
+        <%= link_to 'Home', front_path -%> > New Subscriber
+      </div>
+      <h1 class="red">Sign Up/ Register Your Loyalty Card</h1>
+      <p style="color: grey;">Enter your details below to order and register for the We Love Merthyr Loyalty Card. You'll also get the latest offers by email or sms.</p>
+      <%= simple_form_for @subscriber, url: create_subscriber_path,  html: { class: 'form-horizontal'}, defaults: { input_html: { class: 'form-control' }} do |f| %>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label for="first_name" class="col-lg-4 control-label">First Name<span class="require">*</span></label>
+              <div class="col-lg-8">
+                <div>
+                  <%= f.input :first_name, label: false%>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label for="last_name" class="col-lg-4 control-label">Last Name<span class="require">*</span></label>
+              <div class="col-lg-8">
+                <div class="">
+                  <%= f.input :last_name, label: false%>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label for="email" class="col-lg-4 control-label">Email<span class="require">*</span></label>
+              <div class="col-lg-8">
+                <div class="">
+                  <%= f.input :email, label: false-%>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label for="mobile" class="col-lg-4 control-label">Mobile</label>
+              <div class="col-lg-8">
+                <div class="">
+                  <%= f.input :mobile, label: false%>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label for="postcode" class="col-lg-4 control-label">Postcode<span class="require">*</span></label>
+              <div class="col-lg-8">
+                <div class="">
+                  <%= f.input :postcode, label: false%>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 content">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="form-group">
+              <label for="address" class="col-lg-2 control-label ">Address<span class="require">*</span></label>
+              <div class="col-lg-9">
+                <%= f.text_area :address, label: false, style: "height:154px; width:102%;"%>
+              </div>
+            </div>
+          </div>
+        </div>        
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="form-group">
+              <%= f.radio_button :order_card, 'true', :checked => true, style: "margin-left:15%;width:9%" %>Do you wish to order a loyalty card?
+              <br>
+              <%= f.radio_button :order_card, 'false', style: "margin-left:15%;width:9%"%>Are you registering your existing loyalty card?
+              <br>
+              <br>
+              <input type="checkbox" id="privacypolicy" style="margin-left:15%;width:9%;">By submitting your details to us you agree with our <%= link_to 'privacy policy', public_privacy_policy_path -%>.
+            </div>
+          </div>
+        </div>
+        <div class="row">          
+          <div class="col-lg-12 content">
+            <div class="form-group">
+              <div class="col-sm-offset-3 col-sm-9">
+                <%= f.button :submit, value: "Submit", class: 'btn-default', :id => "newsubscribe"%>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <br>
+    <div class="col-lg-4 col-md-4">
+      <div style="background-color: #E84530;padding: 1em;">       
+        <h1 style="color: whitesmoke;">Do you have a loyalty card?</h1>
+        <hr style="border-color: white;">
+        <p style="font-size: 23px;font-weight: 700;color: whitesmoke;">You can order or register your loyalty card by clicking on the link below:</p>
+        <a href="<%= public_new_subscriber_path -%>" class="btn-default btn-lg btn-block" style="text-align: center;color: #f94623;font-size: 23px;">Sign Up/ Register</a>
+      </div>     
+    </div>
+  </div>
+<%- end -%>
+
+
+<script type="text/javascript">
+  $(document).ready(function() {
+   $('#newsubscribe').prop('disabled', true);
+   $('input[id="privacypolicy"]').click(function () {
+      if ($(this).prop('checked')) {
+        $('#newsubscribe').prop('disabled', false);
+      }
+      else{
+        $('#newsubscribe').prop('disabled', true);
+      }
+    });
+  });
+</script>
+

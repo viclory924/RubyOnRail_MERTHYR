@@ -1,0 +1,84 @@
+<div class="content">
+  <!-- content HEADER -->
+  <!-- ========================================================= -->
+  <div class="content-header">
+    <!-- leftside content header -->
+    <div class="leftside-content-header">
+      <ul class="breadcrumbs">
+        <li><i class="fa fa-columns" aria-hidden="true"></i><a href="#">Events</a></li>
+        <li><a>Show</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="row animated fadeInRight">
+    <div class="col-sm-12">
+      <% unless notice.blank? %>
+        <p id="notice" class="alert success"><%= notice %></p>
+      <% end %>
+      <div class="panel">
+        <div class="panel-content">
+          <div class="table-responsive">            
+            <p>
+              <b>Name:</b>
+              <%= @event.name %>
+            </p>
+
+            <p>
+              <b>Description:</b>
+              <%= @event.description %>
+            </p>
+
+            <p>
+              <b>Starts:</b>
+              <%= @event.starts.strftime("%B #{@event.starts.day.ordinalize}, %-I:%M%P") %>
+            </p>
+
+            <p>
+              <b>Ends:</b>
+              <%= @event.ends.strftime("%B #{@event.ends.day.ordinalize}, %-I:%M%P") %>
+            </p>
+
+            <p>
+              <b>Location name:</b>
+              <%= @event.location_name %>
+            </p>
+
+            <p>
+              <b>Location address:</b>
+              <%= @event.location_address %>
+            </p>
+
+            <p>
+              <b>Lat/Lon:</b>
+              <%= @event.lat %> / <%= @event.lon %>
+            </p>
+
+            <p>
+              <b>Image:</b>
+              <%= image_tag(@event.image_url(:admin_thumb)) if @event.image.present? %>
+            </p>
+
+            <p>
+              <b>Image mode:</b>
+              <%= @event.image_mode -%>
+            </p>
+
+            <p>
+              <b>Repeat interval:</b>
+              <%= @event.repeat %>
+            </p>
+
+            <p>
+              <b>Next occurrence:</b>
+              <%= @event.next_occurrence %>
+            </p>
+
+            <%= link_to 'Edit', edit_event_path(@event) %> |
+            <%= link_to 'Back', events_path %>
+
+          </div>
+        </div>
+      </div>
+    </div> 
+  </div> 
+</div>

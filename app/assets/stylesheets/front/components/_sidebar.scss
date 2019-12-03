@@ -1,0 +1,88 @@
+.sidebar-block-wrap{
+	margin: 0;
+	padding: 0;
+	position: relative;
+	.sidebar-block{
+		margin: 0 0 1rem;
+		padding: 0;
+		background-color: $white; 
+		@include box-shadow(0 0 16px rgba(0, 0, 0, 0.1));
+		position: relative;
+		border-radius: 0.1875rem;
+		.sidebar-block-title{
+			margin: 0;
+			padding: 1rem;
+			font-size: 1.5rem;
+			text-align: center;
+			line-height: 1;
+			color: $white;
+			background-color: $cool-gray-1;
+			border-radius: 0.1875rem 0.1875rem 0 0;
+			&.primary{
+				background-color: $primary-color;
+			}
+			&.secondary{
+				background-color: $secondary-color;
+			}
+			&.tertiary{
+				background-color: $tertiary-color;
+			}
+			&.quadary{
+				background-color: $quadary-color;
+			}
+		}
+		.sidebar-block-content{
+			margin: 0;
+			padding: 1rem;
+			position: relative;
+			#select-catagory-button.button{
+				margin: 0 0 1rem;
+				border: none;
+			}
+			.button{
+				margin: 0 0 1rem;
+				&:last-of-type{
+					margin: 0;
+				}
+			}
+			.dropdown-pane{
+				width: calc(100% - 2rem);
+				padding: 0;
+				ul.menu{
+					li{
+						a{
+							padding: 0.875rem 1rem;
+							border-bottom: 1px solid $cool-gray-3;
+							&:hover{
+								color: $secondary-color;
+							}
+							i{
+								margin-right: 1rem;
+								vertical-align: middle;
+							}
+						}
+						&:last-of-type{
+							>a{
+								border-bottom: none;
+							}
+						}
+					}
+				}
+			}
+			#downloadlist{
+				.list-group{
+					.list-group-item{
+						margin-bottom: 0;
+						padding: 0.625rem 0.3215rem;
+						color: $cool-gray-2;
+						border-bottom: 1px solid $cool-gray-4;
+						display: block;
+						&:hover{
+							color: $primary-color;
+						}
+					}
+				}
+			}
+		}
+	}
+}

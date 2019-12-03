@@ -1,0 +1,79 @@
+<%= content_for :bread_crumbs do -%>
+  <div class="row">
+    <div class="col-lg-8 content">
+        <div class="bread_crumbs">
+          <%= link_to 'Home', front_path -%> > Events
+        </div>
+        <h1 class="red">What's going on in Merthyr Tydfil Town Centre </h1>
+    </div>
+  </div>
+<%- end -%>
+
+<%= content_for :sidebar_calendar do -%>
+    <div class="widget">
+
+        <%= render partial: 'shared/sidebar_calendar', locals: {data: @data, events: @events} %>
+    </div>
+<%- end -%>
+
+<div class="col-lg-8 content">
+
+  <div class="events">
+    <ul class="events_list">
+      <%- @events.each do |e| -%>
+        <li style="margin-bottom:0">
+          <div>
+            <div class="col-lg-10">
+              <h4><%= link_to e.name, public_event_path(e) -%></h4>
+              <div class="event_info">
+                <div class="event_date">
+                  <%= render_date(e) %>
+                </div>
+                <div class="event_location">
+                  Location: <%= e.location_name -%>
+                </div>
+              </div>
+              <%=raw e.description -%>
+
+              <div class="clearfix"></div>
+            </div>
+
+            <div class="col-lg-2 events_thumbnail">
+              <a href="<%= public_event_path(e) -%>" class="thumbnail">
+                <%- if e.image.present? -%>
+                  <%= image_tag e.image_url("#{e.image_mode}_small_thumb".to_sym) -%>
+                <%- else -%>
+                  <div class="thumbnail" style="background-color:#aaa;width:193px;height:139px"></div>
+                <%- end -%>
+              </a>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </li>
+
+        <li style="padding-right:15px">
+      <!--     <div>
+            <div class="share_via">
+            <p>Share via:</p>
+            <!-- AddThis Button BEGIN -->
+        <!--     <div class="addthis_toolbox addthis_default_style ">
+              <span style="float:left"> <fb:like href="<%= public_event_url(e) -%>" layout="button_count" action="like" show_faces="false"></fb:like></span>
+              <!--<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>-->
+      <!--         <a class="addthis_button_tweet" style="width:80px"></a>
+              <a class="addthis_button_pinterest_pinit" style="width:50px" pi:pinit:layout="horizontal"></a>
+              <a class="addthis_counter addthis_pill_style"></a>
+            </div>
+            <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+            <script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-526e92c31dafd4cc"></script>
+            <!-- AddThis Button END -->
+        <!--   </div>
+        </div> -->
+        </li>
+      <%- end -%>
+    </ul>
+
+    <ul class="pagination">
+      <!--< %= paginate @events -%>-->
+     </ul>
+  </div>
+</div>

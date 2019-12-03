@@ -1,0 +1,59 @@
+<div class="dow">
+  <div class="col-lg-8 content">
+      <div class="bread_crumbs">
+        <%= link_to 'Home', front_path -%> > <%= link_to 'News', blog_path -%> > <%= @post.title -%>
+      </div>
+      <h1 class="red title_post"><%= @post.title -%></h1>
+      <div class="post_entry_meta">
+          <div class="date">
+            <span></span><a href="#"><%= @post.published_at.strftime("%B %d %Y") -%></a>
+          </div>
+          <div class="category">
+            <span></span>
+            <%= link_to @post.category, '#' -%>
+          </div>
+        </div>
+  </div>
+  <div class="col-lg-4">
+  </div>
+</div>
+
+<div class="col-lg-8 content">
+  <div class="blog">
+        <div class="social_shared">
+          <span class='st_twitter_vcount' displayText='Tweet'></span>
+          <span class='st_facebook_vcount' displayText='Facebook'></span>
+          <span class='st_googleplus_vcount' displayText='Google +'></span>
+          <span class='st_email_vcount' displayText='Email'></span>
+        </div>
+        <div class="post_thumbnail">
+          <%- if @post.image.present? -%>
+            <div class="thumbnail">
+              <%= image_tag @post.image_url("#{@post.image_mode}_big_thumb".to_sym) -%>
+            </div>
+          <%- end -%>
+        </div>
+        <%=raw @post.body -%>
+  </div>
+</div>
+<div class="col-lg-4 sidebar">
+  <div class="widget">
+    <h2 class="red">Recent Posts</h2>
+    <div class="widget_recent_posts">
+      <%- Post.latest(5).reject { |p| p.id == @post.id }.each do |p| -%>
+        <div class="recent_post">
+          <%= link_to blog_post_path(p), class: 'title' do -%>
+            <%= p.title -%>
+          <%- end -%>
+          <div class="recent_posts_entry_meta">
+            <%= link_to @post.published_at.strftime("%B %d %Y"), '#' -%> | <%= link_to @post.category, '#' -%>
+          </div>
+        </div>
+      <%- end -%>
+    </div>
+  </div>          
+  <div class="widget">
+    <%= render partial: 'shared/sidebar_socials' -%>
+  </div>
+  
+</div>

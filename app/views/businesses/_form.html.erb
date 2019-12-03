@@ -1,0 +1,146 @@
+<div class="row animated fadeInUp">
+  <div class="col-sm-12">
+    <div class="panel">
+      <div class="panel-content">
+        <div class="row">
+          <div class="col-md-12">
+            <%= simple_form_for @business, html: { class: 'form-horizontal'}, defaults: { input_html: { class: 'form-control' }} do |f| %>
+              <div class="form-group">
+                <label for="name" class="col-sm-3 control-label">Name<span class="require">*</span></label>
+                <div class="col-sm-6">
+                  <%= f.input :name, label: false %>
+                </div>
+              </div>  
+              <div class="form-group">
+                <label for="category" class="col-sm-3 control-label">Category</label>
+                <div class="col-sm-6">
+                  <%= f.input :category, collection: Business::CATEGORIES, prompt: 'Please select', label: false %>
+                </div>
+              </div>  
+              <div class="form-group">
+                <label for="contact" class="col-sm-3 control-label">Contact</label>
+                <div class="col-sm-6">
+                  <%= f.input :contact, label: false %>
+                </div>
+              </div>  
+              <div class="form-group">
+                <label for="address" class="col-sm-3 control-label">Address</label>
+                <div class="col-sm-6">
+                  <%= f.input :address, label: false %>       
+                </div>
+              </div>  
+              <div class="form-group">
+                <label for="town" class="col-sm-3 control-label">Town</label>
+                <div class="col-sm-6">
+                  <%= f.input :town, placeholder: Business::DEFAULT_TOWN, label: false %>
+                </div>
+              </div>  
+              <div class="form-group">
+                <label for="postcode" class="col-sm-3 control-label">Postcode</label>
+                <div class="col-sm-6">
+                  <%= f.input :postcode, label: false %>
+                </div>
+              </div>  
+              <div class="form-group">
+                <label for="telephone" class="col-sm-3 control-label">Telephone</label>
+                <div class="col-sm-6">
+                  <%= f.input :telephone, label: false %>
+                </div>
+              </div>  
+              <div class="form-group">
+                <label for="website" class="col-sm-3 control-label">Website</label>
+                <div class="col-sm-6">
+                  <%= f.input :website, label: false %>
+                </div>
+              </div>  
+              <div class="form-group">
+                <label for="email" class="col-sm-3 control-label">Email</label>
+                <div class="col-sm-6">
+                  <%= f.input :email, label: false %>
+                </div>
+              </div>            
+              <div class="form-group">
+                <label for="twitter" class="col-sm-3 control-label">Twitter</label>
+                <div class="col-sm-6">
+                  <%= f.input :twitter, label: false -%>
+                </div>
+              </div>            
+              <div class="form-group">
+                <%= f.hidden_field :lat%>
+                <%= f.hidden_field :lon%>         
+              </div>            
+              <div class="form-group">
+                <label for="business_facebook" class="col-sm-3 control-label">Facebook</label>
+                <div class="col-sm-6">
+                  <div class="checkbox">
+                    <input type="checkbox" id="business_facebook" name="business[facebook]" class="boolean optional" value="1" <%= "checked=checked" if @business.facebook %> />
+                  </div>
+                </div>
+              </div>            
+              <div class="form-group">
+                <label for="services" class="col-sm-3 control-label">Services</label>
+                <div class="col-sm-6">
+                  <%= f.input :services, label: false -%>
+                </div>
+              </div>         
+              <div class="form-group">
+                <label for="Profile" class="col-sm-3 control-label">Profile</label>
+                <div class="col-sm-6">
+                  <%= f.input :profile, as: :text, input_html: { class: 'my_tinymce' }, label: false -%>
+                </div>
+              </div>
+              <%- if @business.photo.present? -%>
+                <div class="form-group">
+                  <label class="col-sm-3 control-label"></label>
+                  <div class="col-sm-6">
+                    <%= image_tag @business.photo_url(:admin_thumb) -%>
+                  </div>
+                </div>
+                <div class='form-group'>
+                  <label class="col-lg-2 control-label" for="business_remove_image"></label>
+                  <div class="col-lg-10">
+                    <div class="checkbox">
+                      <input type="checkbox" id="business_remove_photo" name="business[remove_photo]" class="boolean optional" value="1" />
+                      <label for="business_remove_photo">Remove photo</label>
+                    </div>
+                  </div>
+                </div>
+              <% end %>              
+              <div class="form-group">
+                <label for="photo" class="col-sm-3 control-label">Photo</label>
+                <div class="col-sm-6">
+                  <%= f.input :photo, label: false -%>
+                </div>
+              </div> 
+              <%- Business::DAYS.each do |day| -%>
+                <div class="form-group">
+                  <label for="#{day}_opening" class="col-sm-3 control-label"><%= day %>_opening</label>
+                  <div class="col-sm-6">
+                    <%= f.input "#{day}_opening", collection: Business::TIMES, prompt: 'Please select', required: false, include_blank: true, label: false -%>
+                  </div>
+                </div>  
+                <div class="form-group">
+                  <label for="#{day}_closing" class="col-sm-3 control-label"><%= day %>_closing</label>
+                  <div class="col-sm-6">
+                    <%= f.input "#{day}_closing", collection: Business::TIMES, prompt: 'Please select', required: false, include_blank: true, label: false -%>
+                  </div>
+                </div>                 
+              <%- end -%>
+              <div class="form-group">
+                <label for="zone" class="col-sm-3 control-label">Zone</label>
+                <div class="col-sm-6">
+                  <%= f.input :zone, collection: Business::ZONES, include_blank: false, label: false -%>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-9">
+                  <%= f.button :submit, class: 'btn-primary' %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

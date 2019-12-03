@@ -1,0 +1,30 @@
+<%= render 'layouts/front/top' %>
+  <section class="single-listing light-gray-bg content-padding">
+    <%= yield :breadcrumbs if content_for? :breadcrumbs %>
+    <div class="row">
+      <div class="small-12 medium-8 column">
+        <div class="single-content-wrap">
+          <div class="single-content">
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+
+      <div class="small-12 medium-4 column">
+        <div class="single-content-wrap">
+          <div class="single-content">
+            <div class="row columns">
+              <div class="latest tertiary">
+                <h2 class="card-title">Latest News</h2>
+                  <div class="card-content" data-equalizer-watch>
+                    <%= render partial: '/pages/news_item', collection: Post.latest(4) %>
+                  </div>
+                  <a href="<%= blog_path %>" class="card-button">More News</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<%= render 'layouts/front/bottom' %>

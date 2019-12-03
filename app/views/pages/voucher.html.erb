@@ -1,0 +1,91 @@
+<section class="single-listing light-gray-bg content-padding">
+	<div class="row">
+		<div class="column">
+			<ul class="breadcrumbs">
+				<li><a href="/"><i class="fa fa-home"></i></a></li>
+				<li class="show-for-medium"><a href="<%= public_vouchers_path %>"><span>Deals</span></a></li>
+				<li><a href="<%= public_voucher_path(@deal) %>"><span><%= @deal.title %></span></a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="row">
+		<div class="small-12 medium-8 column">
+			<div class="single-content-wrap">
+				<div class="single-content-feature">
+					<%= image_tag @deal.image_url(:f_large) -%>
+				</div>
+				<div class="single-content">
+					<h3><%= @deal.title %></h3>
+					<p class="subheading secondary"><%= @deal.business.name -%></p>
+					<p><%=raw @deal.description %></p>
+					<div class="post-meta">
+						<div class="post-meta-item">
+							<div class="icon tertiary">
+								<i class="fa fa-clock-o"></i>
+							</div>
+							<div class="text">
+								<p>Deal Expires: <%= @deal.end_date.strftime("%B #{@deal.end_date.day.ordinalize}, %Y") -%></p>
+							</div>
+						</div>
+						<div class="post-meta-item">
+							<div class="icon tertiary">
+								<i class="fa fa-map-marker"></i>
+							</div>
+							<div class="text">
+								<p><a class="secondary underline" href="<%= public_business_path(@deal.business) %>"><%=@deal.business.name%></a> <%= @deal.business.full_address%></p>
+							</div>
+						</div>
+					</div>
+					<h5>Terms & Conditions</h5>
+					<p>
+					<%= @deal.terms -%>
+					</p>
+					<h4>How to claim</h4>
+					<div class="row">
+						<div class="medium-4 small-12 columns">
+							<%= image_tag "front/loyalty-card.jpg" %>
+						</div>
+						<div class="medium-8 small-12 columns">
+							<p>
+							This deal can only be claimed at the business with the 'We Love Merthyr' Loyalty Card. If you haven't got a loyalty card you can apply by clicking the link below.
+							</p>
+							<a href="<%= public_new_subscriber_path %>" class="button">Get Your Loyalty Card</a>
+						</div>
+					</div>
+					<hr>
+					Share this deal: 
+					<div class="sharethis-inline-share-buttons"></div>
+					<!--ul class="social-links">
+					<span><b>Share: </b></span>
+					<li><a href="" class="facebook"><i class="fa fa-facebook"></i><span>Facebook</span></a></li>
+					<li><a href="" class="twitter"><i class="fa fa-twitter"></i><span>Twitter</span></a></li>
+					</ul-->
+				</div>
+			</div>
+		</div>
+		<div class="small medium-4 column">
+			<div class="single-content-wrap">
+				<div class="single-content">
+					<h4>Other Deals</h4>
+					<%- Deal.all.shuffle.first(4).reject { |d| d.id == @deal.id }.each do |deal| -%>
+					<div class="post-excerpt-horizontal">
+						<div class="post-image">
+							<div class="overlay secondary"></div>
+							
+							<%= image_tag deal.image_url(:f_thumb) -%>
+						</div>
+						<div class="post-content">
+							<h3 class="title"><%= link_to deal.title, public_voucher_path(deal) %></h3>
+							<a href="<%= public_new_subscriber_path %>" class="button secondary"><i class="fa fa-tag"></i><span>Get Deal</span></a>
+						</div>
+					</div>
+					<%- end -%>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<%= content_for :head do %>
+	<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<% end %>

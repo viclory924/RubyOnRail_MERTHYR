@@ -1,0 +1,37 @@
+<div class="page-header">
+    <div class="user-name">
+      <%= link_to root_path, class: 'navbar-brand', style: "color: white" do -%>
+        We Love Merthyr
+      <%- end -%>
+    </div>
+    <!-- LEFTSIDE header -->
+    <div class="leftside-header">
+        <div class="logo">
+            <a href="#" class="on-click">
+            </a>
+        </div>
+        <div id="menu-toggle" class="visible-xs toggle-left-sidebar" data-toggle-class="left-sidebar-open" data-target="html">
+            <i class="fa fa-bars" aria-label="Toggle sidebar"></i>
+        </div>
+    </div>
+    <!-- RIGHTSIDE header -->
+    <div class="rightside-header">
+        <div class="header-middle"></div>
+        <!--USER HEADERBOX -->
+        <%- if user_signed_in? -%>
+            <div class="header-section" id="user-headerbox">
+                    <div class="user-header-wrap">
+                        <div class="user-info">
+                            <span class="user-name"><%= current_user.email %></span>
+                            <span class="user-profile">Admin</span>
+                        </div>
+                    </div>
+            </div>
+            <div class="header-separator"></div>
+            <!--Log out -->
+            <div class="header-section">
+                <%= link_to '', destroy_user_session_path, method: :delete, :class=> "fa fa-sign-out log-out"-%>
+            </div>
+        <%end%>    
+    </div>
+</div>

@@ -1,0 +1,19 @@
+<%= content_for :sidebar do -%>
+  <div class="col-lg-4 sidebar">
+    <div class="widget widget_search">
+      <%= render partial: 'shared/sidebar_search' -%>
+    </div>
+
+    <!--<div class="widget">-->
+      <!--< %= render partial: 'shared/sidebar_tags' -%>-->
+    <!--</div>-->
+
+    <%= yield :sidebar_calendar if content_for? :sidebar_calendar -%>
+
+    <div class="widget">
+      <%= render partial: 'shared/sidebar_socials' -%>
+    </div>
+  </div>
+<%- end -%>
+
+<%= render template: 'layouts/application' -%>

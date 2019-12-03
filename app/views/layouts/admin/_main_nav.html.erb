@@ -1,0 +1,36 @@
+<div class="navbar navbar-fixed-top navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <%= link_to root_path, class: 'navbar-brand' do -%>
+        We Love Merthyr
+      <%- end -%>
+    </div>
+
+    <div class="navbar-collapse collapse navbar-responsive-collapse">
+      <ul class="nav navbar-nav">
+        <%- if user_signed_in? -%>
+          <li class=""><%= link_to 'Businesses', businesses_path -%></li>
+          <li class=""><%= link_to 'Events', events_path -%></li>
+          <li class=""><%= link_to 'Pages', pages_path -%></li>
+          <li class=""><%= link_to 'Templates', page_templates_path -%></li>
+          <li class=""><%= link_to 'Posts', posts_path -%></li>
+          <li class=""><%= link_to 'Deals', deals_path -%></li>
+          <li class=""><%= link_to 'Sliders', sliders_path -%></li>
+          <li class=""><%= link_to 'Subscribers', subscribers_path -%></li>
+          <li class=""><%= link_to 'Downloads', downloads_path -%></li>
+        <%- end -%>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <%- if user_signed_in? -%>
+          <li> <%= link_to current_user.email, '#' -%> </li>
+          <li> <%= link_to 'Log out', destroy_user_session_path, method: :delete -%> </li>
+        <%- else -%>
+          <!--<li> <%#= link_to 'Log in', new_user_session_path -%> </li>-->
+          <li> <%= link_to 'Sign up', new_user_registration_path -%> </li>
+        <%- end -%>
+
+      </ul>
+    </div>
+  </div>
+</div>

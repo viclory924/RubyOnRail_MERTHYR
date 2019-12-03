@@ -1,0 +1,327 @@
+<div class="content">
+  <!-- content HEADER -->
+  <!-- ========================================================= -->
+  <div class="content-header">
+    <!-- leftside content header -->
+    <div class="leftside-content-header">
+      <ul class="breadcrumbs">
+        <li><i class="fa fa-columns" aria-hidden="true"></i><a href="#">admin dashboard</a></li>
+      </ul>
+    </div> 
+  </div>  
+  <div id="">
+    <div id="auth-button"></div>
+    <div id="view-selector" style="display: none;"></div><br><br>
+    <!-- <div id="timeline"></div><br><br> -->
+    <div><h4>Unique Visitors:this week</h4></div><br><br>
+    <div id="timeline1"></div><br><br>
+    <div><h4>Unique Visitors:this month</h4></div><br><br>
+    <div id="timeline3"></div><br><br>
+    <div><h4>Unique Visitors:this year</h4></div><br><br>
+    <div id="timeline2"></div><br><br>
+    <div><h4>Unique Visitors:last month</h4></div><br><br>
+    <div id="timeline4"></div><br><br>
+    <div><h4>Unique Visitors:last week</h4></div><br><br>
+    <div id="timeline5"></div><br><br>
+    <div><h4>Average Session Time:this month(in second)</h4></div><br><br>
+    <div id="timeline6"></div><br><br>
+    <div><h4>5 Most Visited Page:this year</h4></div><br><br>
+    <div id="timeline7"></div><br><br>
+    <div><h4>5 Most Visited Page:this month</h4></div><br><br>
+    <div id="timeline8"></div><br><br>
+    <div><h4>5 Most Visited Page:this week</h4></div><br><br>
+    <div id="timeline9"></div><br><br>
+  </div>
+  <script>
+    (function(w,d,s,g,js,fjs){
+      g=w.gapi||(w.gapi={});g.analytics={q:[],ready:function(cb){this.q.push(cb)}};
+      js=d.createElement(s);fjs=d.getElementsByTagName(s)[0];
+      js.src='https://apis.google.com/js/platform.js';
+      fjs.parentNode.insertBefore(js,fjs);js.onload=function(){g.load('analytics')};
+    }(window,document,'script'));
+  </script>
+  <script>
+    gapi.analytics.ready(function() {
+
+      var CLIENT_ID = '210557425963-g5ru3kcqiq79pg3c3mqngst0onj45q5b.apps.googleusercontent.com';
+
+      gapi.analytics.auth.authorize({
+        container: 'auth-button',
+        clientid: CLIENT_ID,
+      });
+
+      var viewSelector = new gapi.analytics.ViewSelector({
+        container: 'view-selector'
+      });
+
+      var timeline1 = new gapi.analytics.googleCharts.DataChart({
+        reportType: 'ga',
+        query: {
+          'ids': 'ga:66466363',
+          'dimensions': 'ga:date',
+          'metrics': 'ga:users',
+          'start-date': getWeekDate("monday"),
+          'end-date': getWeekDate("sunday"),
+        },
+        chart: {
+          type: 'LINE',
+          container: 'timeline1'
+        }
+      });
+
+      // Data for Unique Visitors:this year
+      var timeline2 = new gapi.analytics.googleCharts.DataChart({
+        reportType: 'ga',
+        query: {
+          'ids': 'ga:66466363',
+          'dimensions': 'ga:date',
+          'metrics': 'ga:users',
+          'start-date': getYearDate("start"),
+          'end-date': getYearDate("end"),
+        },
+        chart: {
+          type: 'LINE',
+          container: 'timeline2'
+        }
+      });
+
+      // Data for Unique Visitors:this month
+      var timeline3 = new gapi.analytics.googleCharts.DataChart({
+        reportType: 'ga',
+        query: {
+          'ids': 'ga:66466363',
+          'dimensions': 'ga:date',
+          'metrics': 'ga:users',
+          'start-date': getMonthDate("start"),
+          'end-date': getMonthDate("end"),
+        },
+        chart: {
+          type: 'LINE',
+          container: 'timeline3'
+        }
+      });
+
+      // Data for Unique Visitors:last month
+      var timeline4 = new gapi.analytics.googleCharts.DataChart({
+        reportType: 'ga',
+        query: {
+          'ids': 'ga:66466363',
+          'dimensions': 'ga:date',
+          'metrics': 'ga:users',
+          'start-date': getLastMonth("start"),
+          'end-date': getLastMonth("end"),
+        },
+        chart: {
+          type: 'LINE',
+          container: 'timeline4'
+        }
+      });
+
+      // Data for Unique Visitors:last week
+      var timeline5 = new gapi.analytics.googleCharts.DataChart({
+        reportType: 'ga',
+        query: {
+          'ids': 'ga:66466363',
+          'dimensions': 'ga:date',
+          'metrics': 'ga:users',
+          'start-date': getLastWeekDate("monday"),
+          'end-date': getLastWeekDate("sunday"),
+        },
+        chart: {
+          type: 'LINE',
+          container: 'timeline5'
+        }
+      });
+
+      // Average Session time:this month
+      var timeline6 = new gapi.analytics.googleCharts.DataChart({
+        reportType: 'ga',
+        query: {
+          'ids': 'ga:66466363',
+          'dimensions': 'ga:date',
+          'metrics': 'ga:avgSessionDuration',
+          'start-date': getMonthDate("start"),
+          'end-date': getMonthDate("end"),
+        },
+        chart: {
+          type: 'LINE',
+          container: 'timeline6'
+        }
+      });
+
+      // 5 Most Visited Page: this year
+      var timeline7 = new gapi.analytics.googleCharts.DataChart({
+        reportType: 'ga',
+        query: {
+          'ids': 'ga:66466363',
+          'dimensions': 'ga:pageTitle',
+          'metrics': 'ga:pageviews',
+          'start-date': getYearDate("start"),
+          'end-date': getYearDate("end"),
+          'sort': '-ga:pageviews,ga:pageTitle',
+          'max-results': 5
+        },
+        chart: {
+          type: 'LINE',
+          container: 'timeline7'
+        }
+      });
+
+      // 5 Most Visited Page: this month
+      var timeline8 = new gapi.analytics.googleCharts.DataChart({
+        reportType: 'ga',
+        query: {
+          'ids': 'ga:66466363',
+          'dimensions': 'ga:pageTitle',
+          'metrics': 'ga:pageviews',
+          'start-date': getMonthDate("start"),
+          'end-date': getMonthDate("end"),
+          'sort': '-ga:pageviews,ga:pageTitle',
+          'max-results': 5
+        },
+        chart: {
+          type: 'LINE',
+          container: 'timeline8'
+        }
+      });
+
+      // 5 Most Visited Page: this week
+      var timeline9 = new gapi.analytics.googleCharts.DataChart({
+        reportType: 'ga',
+        query: {
+          'ids': 'ga:66466363',
+          'dimensions': 'ga:pageTitle',
+          'metrics': 'ga:pageviews',
+          'start-date': getWeekDate("monday"),
+          'end-date': getWeekDate("sunday"),
+          'sort': '-ga:pageviews,ga:pageTitle',
+          'max-results': 5
+        },
+        chart: {
+          type: 'LINE',
+          container: 'timeline9'
+        }
+      });
+
+      gapi.analytics.auth.on('success', function(response) {
+        viewSelector.execute();
+      });
+      viewSelector.on('change', function(ids) {
+        var newIds = {
+          query: {
+            ids: ids
+          }
+        }
+        // timeline.set(newIds).execute();
+        timeline1.set(newIds).execute();
+        timeline2.set(newIds).execute();
+        timeline3.set(newIds).execute();
+        timeline4.set(newIds).execute();
+        timeline5.set(newIds).execute();
+        timeline6.set(newIds).execute();
+        timeline7.set(newIds).execute();
+        timeline8.set(newIds).execute();
+        timeline9.set(newIds).execute();
+      });
+    });
+
+    function getAverageSessionTime(date){
+      var current = new Date();
+      if (date == "start"){
+        var firstDay = new Date(current.getFullYear(), current.getMonth(), 1);
+        var month = firstDay.getMonth() + 1;
+        return firstDay.getFullYear()+"-"+checkDate(month)+"-"+checkDate(firstDay.getDate())
+      }
+      if (date == "end"){
+        var lastDay = new Date(current.getFullYear(), current.getMonth() + 1, 0);
+        var month = lastDay.getMonth() + 1;
+        return lastDay.getFullYear()+"-"+checkDate(month)+"-"+checkDate(lastDay.getDate())
+      }
+    }
+
+
+
+    function getLastWeekDate(day){
+      var current = new Date();     // get current date
+      var weekstart = current.getDate() - current.getDay() - 6;
+      var weekend = weekstart + 6;
+      if (day == "monday"){
+        var monday = new Date(current.setDate(weekstart));
+        var month = monday.getMonth() + 1;
+        return monday.getFullYear()+"-"+checkDate(month)+"-"+checkDate(monday.getDate())
+      }
+      if (day == "sunday"){
+        var sunday = new Date(current.setDate(weekend));
+        var month = sunday.getMonth() + 1;
+        return sunday.getFullYear()+"-"+checkDate(month)+"-"+checkDate(sunday.getDate())
+      }
+    }
+
+    function checkDate(num){
+      if(num < 10){
+          return "0"+num.toString()
+      }else{
+          return num.toString()
+      }
+    }
+
+    function getLastMonth(date){
+        var current = new Date();
+        if (date == "start"){
+          var firstDay = new Date(current.getFullYear(), current.getMonth() - 1, 1);
+          var month = firstDay.getMonth() + 1;
+          return firstDay.getFullYear()+"-"+checkDate(month)+"-"+checkDate(firstDay.getDate())
+        }
+        if (date == "end"){
+          var lastDay = new Date(current.getFullYear(), current.getMonth(), 0);
+          var month = lastDay.getMonth() + 1;
+          return lastDay.getFullYear()+"-"+checkDate(month)+"-"+checkDate(lastDay.getDate())
+        }
+      }
+
+    function getMonthDate(date){
+      var current = new Date();
+      if (date == "start"){
+        var firstDay = new Date(current.getFullYear(), current.getMonth(), 1);
+        var month = firstDay.getMonth() + 1;
+        return firstDay.getFullYear()+"-"+checkDate(month)+"-"+checkDate(firstDay.getDate())
+      }
+      if (date == "end"){
+        var lastDay = new Date(current.getFullYear(), current.getMonth() + 1, 0);
+        var month = lastDay.getMonth() + 1;
+        return lastDay.getFullYear()+"-"+checkDate(month)+"-"+checkDate(lastDay.getDate())
+      }
+    }
+      
+    function getWeekDate(day){
+      var current = new Date();     // get current date    
+      var weekstart = current.getDate() - current.getDay() +1;    
+      var weekend = weekstart + 6;  
+      if (day == "monday"){
+        var monday = new Date(current.setDate(weekstart));
+        var month = monday.getMonth() + 1;
+        return monday.getFullYear()+"-"+checkDate(month)+"-"+checkDate(monday.getDate())
+      }
+      if (day == "sunday"){
+        var sunday = new Date(current.setDate(weekend));
+        var month = sunday.getMonth() + 1;
+        return sunday.getFullYear()+"-"+checkDate(month)+"-"+checkDate(sunday.getDate())
+      }
+    }
+
+    function getYearDate(date){
+      var current = new Date();
+      if (date == "start"){
+        var start_date = new Date(current.getFullYear(),0,1);
+        var month = start_date.getMonth() + 1;
+        return start_date.getFullYear()+"-"+checkDate(month)+"-"+checkDate(start_date.getDate())
+      }
+      if (date == "end"){
+        var end_date = new Date(current.getFullYear(),11,31);
+        var month = end_date.getMonth() + 1;
+        return end_date.getFullYear()+"-"+checkDate(month)+"-"+checkDate(end_date.getDate())
+      }
+    }
+  </script>
+</div>
+

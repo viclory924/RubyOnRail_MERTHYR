@@ -1,0 +1,9 @@
+<h2>Some things you can find:</h2>
+
+<div class="white_block widget_tag">
+  <%- if defined? tags -%>
+    <%- tags.each do |t| -%>
+      <a class="btn btn-xs btn-primary " href="<%= public_businesses_category_path(t[:business].category, tag: t[:tag].strip) -%>"><%= t[:tag] -%></a>
+    <%- end -%>
+  <%- end -%>
+</div>

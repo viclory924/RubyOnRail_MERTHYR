@@ -1,0 +1,43 @@
+<div class="content">
+  <!-- content HEADER -->
+  <!-- ========================================================= -->
+  <div class="content-header">
+    <!-- leftside content header -->
+    <div class="leftside-content-header">
+      <ul class="breadcrumbs">
+        <li><i class="fa fa-columns" aria-hidden="true"></i><a href="#">Page Templates</a></li>
+        <li><a>Show</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="row animated fadeInRight">
+    <div class="col-sm-12">
+      <% unless notice.blank? %>
+        <p id="notice" class="alert alert-success"><%= notice %></p>
+      <% end %>
+      <div class="panel">
+        <div class="panel-content">
+          <div class="table-responsive">            
+            <p>
+              <b>Title:</b>
+              <%= @page_template.title %>
+            </p>
+
+            <p>
+              <b>Body:</b>
+              <%= @page_template.body %>
+            </p>
+
+            <p>
+              <b>Layout:</b>
+              <%= @page_template.layout_name %>
+            </p>
+
+            <%= link_to 'Edit', edit_page_template_path(@page_template) %> |
+            <%= link_to 'Back', page_templates_path %>
+          </div>
+        </div>
+      </div>
+    </div> 
+  </div> 
+</div>

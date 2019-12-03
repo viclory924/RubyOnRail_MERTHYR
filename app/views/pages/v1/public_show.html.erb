@@ -1,0 +1,22 @@
+<%= content_for :bread_crumbs do -%>
+  <div class="dow">
+    <div class="col-lg-12 content">
+        <div class="bread_crumbs">
+          <a href="<%= front_path -%>">Home</a> >
+
+          <%- if @page.parent.present? -%>
+            <%- parent_page = Page.find(@page.parent.slug) -%>
+            <%= link_to_if parent_page.present?, @page.parent.title, public_page_show_path(parent_page.slug) do -%>
+              <%= @page.parent.title -%>
+            <%- end -%>
+            >
+          <%- end -%>
+
+          <%= @page.title -%>
+        </div>
+        <h1 class="red title_post"><%= @page.title -%></h1>
+    </div>
+  </div>
+<%- end -%>
+
+<%=raw @page.body -%>

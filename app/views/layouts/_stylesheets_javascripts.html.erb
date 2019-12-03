@@ -1,0 +1,77 @@
+<%= javascript_include_tag "application" %>
+
+
+<!-- ADD TO CALENDER STYLESHEET -->
+<link href="http://addtocalendar.com/atc/1.5/atc-style-blue.css" rel="stylesheet" type="text/css">
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- <script src="/assets/template/bootstrap-tooltip.js"></script> -->
+<!-- <script src="http://vjs.zencdn.net/c/video.js"></script> -->
+
+<!--[if lt IE 8]>
+  <script src="/assets/template/icon-font-ie7.js"></script>
+  <script src="/assets/template/icon-font-ie7-24.js"></script>
+<![endif]-->
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+  <script src="/assets/template/html5shiv.js"></script>
+  <script src="/assets/template/respond.min.js"></script>
+<![endif]-->
+
+<!-- ShareThis scripts -->
+<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async='async'></script>
+<script>
+  var OneSignal = window.OneSignal || [];
+  OneSignal.push(["init", {
+    appId: "f7797619-57a9-49dd-9325-946bd16d1095",
+    autoRegister: true, /* Set to true to automatically prompt visitors */
+    subdomainName: "welovemerthyr",
+    safari_web_id: "web.onesignal.auto.6974e7ad-baef-42fd-b71d-7f7df083312f",
+    notifyButton: {
+        enable: true /* Set to false to hide */
+    }
+  }]);
+</script>
+
+<script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "0de77d33-4a95-4f90-ab96-9cd0a2f9fd7f", doNotHash: true, doNotCopy: true, hashAddressBar: true});</script>
+
+<script>
+  $(document).ready(function(){
+    $('#iview').iView({
+      pauseTime: 6000,
+      pauseOnHover: true,
+      directionNavHoverOpacity: 1,
+      timer: "Bar",
+      timerDiameter: "50%",
+      timerPadding: 0,
+      timerStroke: 7,
+      timerBarStroke: 0,
+      timerColor: "#FFF",
+      timerPosition: "bottom-right"
+    });
+  });
+</script>
+
+<script type="text/javascript">
+    $(function() { $.smartbanner({
+    title: "We Love Merthyr", // What the title of the app should be in the banner (defaults to <title>)
+    author: null, // What the author of the app should be in the banner (defaults to <meta name="author"> or hostname)
+    price: 'FREE', // Price of the app
+    appStoreLanguage: 'us', // Language code for App Store
+    inAppStore: 'FREE', // Text of price for iOS
+    inGooglePlay: 'FREE', // Text of price for Android
+    icon: null, // The URL of the icon (defaults to <link>)
+    iconGloss: null, // Force gloss effect for iOS even for precomposed (true or false)
+    button: 'VIEW', // Text on the install button
+    scale: 'auto', // Scale based on viewport size (set to 1 to disable)
+    speedIn: 300, // Show animation speed of the banner
+    speedOut: 400, // Close animation speed of the banner
+    daysHidden: 15, // Duration to hide the banner after being closed (0 = always show banner)
+    daysReminder: 90, // Duration to hide the banner after "VIEW" is clicked (0 = always show banner)
+    force: null // Choose 'ios' or 'android'. Don't do a browser check, just always show this banner
+}) } )
+</script>

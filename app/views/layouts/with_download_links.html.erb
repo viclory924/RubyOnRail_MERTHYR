@@ -1,0 +1,29 @@
+<%= render 'layouts/front/top' %>
+  <section class="single-listing light-gray-bg content-padding">
+    <%= yield :breadcrumbs if content_for? :breadcrumbs %>
+    <div class="row">
+
+      <div class="small-12 medium-8 column">
+        <div class="single-content-wrap">
+          <div class="single-content">
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+
+      <div class="small-12 medium-4 column">
+        <div class="sidebar-block-wrap">
+
+          <div class="sidebar-block">
+            <h2 class="sidebar-block-title tertiary">Uploads</h2>
+            <div class="sidebar-block-content">
+              <%= render partial: 'shared/sidebar_download_links' -%>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      
+    </div>
+  </section>
+<%= render 'layouts/front/bottom' %>

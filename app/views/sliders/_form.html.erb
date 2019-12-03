@@ -1,0 +1,78 @@
+<div class="row animated fadeInUp">
+  <div class="col-sm-12">
+    <div class="panel">
+      <div class="panel-content">
+        <div class="row">
+          <div class="col-md-12">
+            <%= simple_form_for @slider, html: { class: 'form-horizontal'}, defaults: { input_html: { class: 'form-control' }} do |f| %>
+              <%- if @slider.image.present? -%>
+                <div class="form-group">
+                  <label class="col-sm-3 control-label"></label>
+                  <div class="col-sm-6">
+                    <%= image_tag @slider.image_url(:admin_thumb) -%>
+                  </div>
+                </div>
+                <div class='form-group'>
+                  <label class="col-lg-2 control-label" for="slider_remove_image"></label>
+                  <div class="col-lg-10">
+                    <div class="checkbox">
+                      <input type="checkbox" id="slider_remove_image" name="slider[remove_image]" class="boolean optional" value="1" />
+                      <label for="slider_remove_image">Remove image</label>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+              <div class="form-group">
+                <label for="image" class="col-sm-3 control-label">Image<span class="require">*</span></label>
+                <div class="col-sm-6">
+                  <%= f.input :image, label: false %>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="header" class="col-sm-3 control-label">Header</label>
+                <div class="col-sm-6">
+                  <%= f.input :header, label: false -%>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="caption" class="col-sm-3 control-label">Caption</label>
+                <div class="col-sm-6">
+                  <%= f.input :caption, label: false -%>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="button_title" class="col-sm-3 control-label">Button title</label>
+                <div class="col-sm-6">
+                  <%= f.input :button_title, label: false -%>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="url" class="col-sm-3 control-label">URL</label>
+                <div class="col-sm-6">
+                  <%= f.input :url, label: false -%>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="visible" class="col-sm-3 control-label">&nbsp;</label>
+                <div class="col-sm-6">
+                  <%= f.input :visible, as: :boolean, inline_label: 'Visible', input_html: { class: 'boolean optional'}, label: false %>
+                </div>
+              </div>                
+              <div class="form-group">
+                <label for="order" class="col-sm-3 control-label">Order</label>
+                <div class="col-sm-6">
+                  <%= f.input :order, collection: (1..Slider.count + 1).to_a, include_blank: false, label: false -%>
+                </div>
+              </div>              
+              <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-9">
+                  <%= f.button :submit, class: 'btn-primary' %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

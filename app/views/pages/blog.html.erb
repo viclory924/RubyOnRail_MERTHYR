@@ -1,0 +1,33 @@
+<section class="content-padding">
+  <div class="row">
+    <div class="column">
+      <h1>Latest News</h1>
+    </div>
+  </div>
+	<div class="row small-up-1 medium-up-2 large-up-3 content-padding" data-equalizer data-equalize-on="medium" data-equalize-by-row="true">
+     <%- @posts.each do |p| -%>
+      <div class="column">
+        <div class="card-wrap">
+          <div class="card primary" data-equalizer-watch>
+            <a href="<%= blog_post_path(p) %>" class="card-image">
+              <div class="overlay primary">
+                <div class="link-icon"><i class="fa fa-link"></i></div>
+              </div>
+              <%= image_tag p.image_url("#{p.image_mode}_big_thumb".to_sym) -%>
+            </a>
+            <div class="card-content">
+              <a href="<%= blog_post_path(p) -%>"><h3 class="card-title event"><%= link_to p.title %></h3></a>
+              <div class="post-meta">
+                <div class="post-meta-item">
+                  <div class="icon"><i class="fa fa-clock-o"></i></div>
+                  <div class="text"><p><%= p.published_at.strftime("%d") -%> <%= p.published_at.strftime("%B") -%> <%= p.published_at.strftime("%Y") -%></p></div>
+                </div>
+              </div>
+            </div>
+            <a href="<%= blog_post_path(p) -%>" class="card-link">View Post</a>
+          </div>
+        </div>
+      </div>
+    <%- end -%>
+	</div>
+</section>

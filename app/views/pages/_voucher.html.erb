@@ -1,0 +1,18 @@
+<div class="column">
+  <div class="card-wrap">
+    <div class="card" data-equalizer-watch>
+      <a href="<%=public_voucher_path(voucher) -%>" class="card-image">
+        <div class="overlay primary">
+          <div class="link-icon"><i class="fa fa-link"></i></div>
+        </div>
+        <%= image_tag voucher.image_url(:f_small) -%>
+      </a>
+      <div class="card-content">
+        <a href="<%=public_voucher_path(voucher) -%>"><h3 class="card-title"><%= voucher.title -%></h3></a>
+        <p class="deal-experation">Deal Expires: <%= voucher.end_date.try(:strftime, "#{voucher.end_date.try(:day).try(:ordinalize)} %B %Y") -%></p>
+        <p class="card-address"><%= voucher.business.full_address -%></p>
+      </div>
+      <a href="<%= public_voucher_path(voucher) -%>" class="card-link">View Deal</a>
+    </div>
+  </div>
+</div>

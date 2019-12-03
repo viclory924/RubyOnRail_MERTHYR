@@ -1,0 +1,74 @@
+<div class="row animated fadeInRight">
+  <div class="col-sm-12">
+    <div class="panel">
+      <div class="panel-content">
+        <div class="row">
+          <div class="col-md-12">
+            <%= simple_form_for @subscriber, html: { class: 'form-horizontal'}, defaults: { input_html: { class: 'form-control' }} do |f| %>
+              <div class="form-group">
+                <label for="first_name" class="col-sm-3 control-label">First Name<span class="require">*</span></label>
+                <div class="col-sm-6">
+                  <%= f.input :first_name, label: false %>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="last_name" class="col-sm-3 control-label">Last Name<span class="require">*</span></label>
+                <div class="col-sm-6">
+                  <%= f.input :last_name, label: false %>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="email" class="col-sm-3 control-label">Email<span class="require">*</span></label>
+                <div class="col-sm-6">
+                  <%= f.input :email, label: false -%>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="mobile" class="col-sm-3 control-label">Mobile</label>
+                <div class="col-sm-6">
+                  <%= f.input :mobile, label: false %>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="deal_id" class="col-sm-3 control-label">Deal Id<span class="require">*</span></label>
+                <div class="col-sm-6">
+                  <%= f.input :deal_id, collection: Deal.all.only(:title), include_blank: false, selected: :_id, label: false -%>
+                </div>
+              </div>                       
+              <div class="form-group">
+                <div class="row">
+                  <label for="address" class="col-sm-3 control-label"><%= f.radio_button :order_card, 'true', :checked => true %></label>
+                  <div class="col-sm-6">
+                     Do you wish to order a loyalty card?
+                  </div> 
+                </div>
+                <div class="row">       
+                <label for="address" class="col-sm-3 control-label"> <%= f.radio_button :order_card, 'false' %></label>
+                <div class="col-sm-6">
+                  Are you registering your existing loyalty card?
+                </div>                
+              </div>
+              <div class="form-group">
+                <label for="address" class="col-sm-3 control-label">Address<span class="require">*</span></label>
+                <div class="col-sm-6">
+                  <%= f.input :address, label: false %>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="postcode" class="col-sm-3 control-label">Postcode<span class="require">*</span></label>
+                <div class="col-sm-6">
+                  <%= f.input :postcode, label: false %>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-9">
+                  <%= f.button :submit, class: 'btn-primary' %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

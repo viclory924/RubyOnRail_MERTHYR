@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:fb="http://ogp.me/ns/fb#" lang="en">
+  <head>
+    <%- page_title = @page_title.present?? "#{@page_title} | We Love Merthyr" : 'We Love Merthyr' -%>
+    <title><%= page_title -%></title>
+    <%= render partial: 'layouts/meta_tags' -%>
+    <!--<link rel="shortcut icon" href="favicon.png">-->
+    <%= render partial: 'layouts/stylesheets_javascripts' -%>
+    <!-- FB Open Graph Meta Tags -->
+    <!--<meta property="fb:app_id" content="<%= Facebook.config[:app_id]-%>"/>
+    <meta property="og:title" content="<%= page_title %>"/>
+    <meta property="og:locale" content="en_UK"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="<%= request.original_url -%>"/>
+    <meta property="og:image" content=""/>
+    <meta property="og:site_name" content="We Love Merthyr"/>-->
+    <!-- end FB Open Graph -->
+    <%= csrf_meta_tags %>
+    
+
+  </head>
+
+  <!--[if IE 7]> <body class="no-js lt-ie9 lt-ie8" data-controller="<%= controller_name -%>" data-action="<%= action_name -%>"> <![endif]-->
+  <!--[if IE 8]> <body class="no-js lt-ie9" data-controller="<%= controller_name -%>" data-action="<%= action_name -%>"> <![endif]-->
+  <!--[if IE 9]> <body class="no-js ie9" data-controller="<%= controller_name -%>" data-action="<%= action_name -%>"> <![endif]-->
+  <!--[if gt IE 9]><!--> <body data-controller="<%= controller_name -%>" data-action="<%= action_name -%>"> <!--<![endif]-->
+    <div class="container">
+      <%= link_to image_tag('img/new_logo.jpg', alt: "", class: "logo"), root_path -%>
+      <% if flash[:notice].present? %>
+        <p class = "alert alert-success alert-dismissable" id="notice" style="width: 50%;text-align: center;position: absolute;margin-left: 190px;"><%= flash[:notice] %></p>
+      <% end %>
+      <%= link_to image_tag("/assets/img/logo2.png", alt: "", class: "logo2"), public_page_show_path('The Big Heart of Merthyr Tydfil'.parameterize) -%>
+    </div>
+
+    <%= render partial: 'layouts/main_nav' -%>
+
+    <div id="wrapper" class="container theme-showcase">
+      <%= yield :bread_crumbs if content_for? :bread_crumbs -%>
+
+      <%= yield %>
+
+      <%= yield :sidebar if content_for? :sidebar -%>
+    </div>
+
+    <%= render partial: 'layouts/footer' -%>
+
+    <span id='fai' style='display:none'><%= Facebook.config[:app_id] -%></span>
+    <!-- ADD TO CALENDER SCRIPT -->
+    <script type="text/javascript">(function () {
+        if (window.addtocalendar)if(typeof window.addtocalendar.start == "function")return;
+        if (window.ifaddtocalendar == undefined) { window.ifaddtocalendar = 1;
+            var d = document, s = d.createElement('script'), g = 'getElementsByTagName';
+            s.type = 'text/javascript';s.charset = 'UTF-8';s.async = true;
+            s.src = ('https:' == window.location.protocol ? 'https' : 'http')+'://addtocalendar.com/atc/1.5/atc.min.js';
+            var h = d[g]('body')[0];h.appendChild(s); }})();
+
+       $(".alert-dismissable").fadeOut(9000);
+        
+    </script>
+  <!--Start Cookie Script--> <script type="text/javascript" charset="UTF-8" src="http://chs03.cookie-script.com/s/0d275c72182fb251878aa71fc54d32ac.js"></script> <!--End Cookie Script-->
+  </body>
+</html>

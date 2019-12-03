@@ -1,0 +1,134 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div id="iview">
+      <%- sliders = Slider.ordered.visible -%>
+      <%- sliders.each_with_index do |slider, index| -%>
+        <div data-iview:thumbnail="<%= slider.image_url(:thumb) -%>" data-iview:image="<%= slider.image_url(:thumb) -%>" data-iview:transition="block-drop-random">
+          <%- if slider.caption.present? -%>
+            <%- if slider.url.present? -%>
+              <%= link_to slider.url do -%>
+                <div style="width:100%" class="iview-caption caption<%= index + 1 -%>" data-x="0" data-y="100" data-transition="expandRight" data-href='<%= slider.url -%>'><%= slider.caption -%></div>
+              <%- end -%>
+            <%- else -%>
+                <div style="width:100%" class="iview-caption caption<%= index + 1 -%>" data-x="0" data-y="100" data-transition="expandRight" data-href='<%= slider.url -%>'><%= slider.caption -%></div>
+            <%- end -%>
+          <%- end -%>
+        </div>
+      <%- end -%>
+    </div>
+  </div>
+</div>
+
+<div class="row home_latest_post_block">
+  <!-- QUICK LINKS -->
+  <div class="col-lg-3">
+    <div class="panel equalHeights">
+         <div class="palette palette-info" >Quick Links</div>
+         <div class="list-group quick_links">
+           <a href="<%= public_page_show_path('Getting Here'.parameterize)-%>" class="list-group-item btn-primary car1">How to Get Here</a>
+           <a href="<%= public_page_show_path('Parking Information'.parameterize) -%>" class="list-group-item btn-primary car2">Parking Information</a>
+           <a href="<%= public_guides_path -%>" class="list-group-item btn-primary marker">Maps and Guides</a>
+           <a href="<%= public_page_show_path('Places to visit'.parameterize) -%>" class="list-group-item btn-primary marker">Places to Visit</a>
+           <a href="<%= public_new_subscriber_path -%>" class="list-group-item btn-primary">Subscribe here</a>
+         </div>
+      </div>
+  </div>
+
+  <!-- EVENTS -->
+  <div class="col-lg-3">
+    <div class="panel equalHeights">
+         <div class=" palette palette-alizarin" >Upcoming Events</div>
+         <div class="list-group upcoming_events">
+           <%- events = EnumerableEvents.new(Event.upcoming(4)) %>
+           <%- Event.upcoming(4).each do |e| -%>
+             <%= link_to public_event_path(e), class: 'list-group-item' do -%>
+                <span class="glyphicon glyphicon-calendar"></span>
+                <div class="col-md-10">
+                  <span class="title"><%= e.name -%></span>
+                  <span class="desc"><%= e.next_occurrence.strftime("%a #{e.next_occurrence.day.ordinalize} %B %Y")-%></span>
+                </div>
+             <%- end -%>
+           <%- end -%>
+         </div>
+      </div>
+      <%= link_to 'More events', public_events_path, class: 'btn btn-s btn-danger pull-right' -%>
+      <div class="clearfix"></div>
+  </div>
+
+  <div class="col-lg-3">
+    <div class="panel equalHeights">
+      <div class=" palette palette-success" >Loyalty Card Deals</div>
+      <div class="list-group latest_blog_posts">
+        <% Deal.limit(4).each do |deal|%>
+          <%= link_to public_vouchers_path(deal), :class =>  "list-group-item" do -%>
+            <span class="glyphicon glyphicon-thumbs-up"></span>
+            <div class="col-md-10">
+              <span class="title" style="color: #a8c64c!important;"><%= deal.title -%></span>
+            </div>            
+          <%- end -%>
+        <%- end -%>
+      </div>
+    </div>
+    <%= link_to 'More Deals', public_vouchers_path, class: 'btn btn-s btn-success pull-right' -%>
+    <div class="clearfix"></div>
+  </div>
+
+  <!-- VOUCHERS -->
+  <!--
+  <div class="col-lg-3">
+    <div class="panel-subscribe-img equalHeights">
+      <%#= link_to image_tag('/assets/subscribe-img.jpg'), 'https://docs.google.com/forms/d/1Mlb_vWflTNK1zAyQY1NRAOmk5CznspTKx9TxCsvepyQ/viewform', target: '_blank' -%>
+      <%#= link_to image_tag('/assets/merthyr_banner_browse.jpg'), 'http://my-loyalty-card.com/merthyr/business-directory/?action=viewlistings', target: '_blank' -%>
+    </div>
+    <%#= render partial: 'shared/latest_vouchers' -%>
+  </div>
+  -->
+
+  <!-- POSTS -->
+  <div class="col-lg-3">
+    <div class="panel equalHeights">
+         <div class="palette palette-concrete" >Latest News</div>
+         <div class="list-group latest_blog_posts">
+           <%- Post.latest(4).each do |p| -%>
+             <%= link_to blog_post_path(p), class: 'list-group-item' do -%>
+               <span class="latest-news-icon"></span>
+               <div class="col-md-10">
+                 <span class="title"><%= p.title -%></span>
+               </div>
+             <%- end -%>
+           <%- end -%>
+         </div>
+      </div>
+      <%= link_to 'More News Posts', blog_path, class: 'btn btn-s btn-link pull-right' -%>
+      <div class="clearfix"></div>
+  </div>
+</div>
+
+<hr />
+
+<div class="row">
+  <!-- TAGS -->
+  <div class="col-lg-8">
+    <h2>Just some of the things you can find in Merthyr Tydfil Town Centre</h2>
+    <div class="town_centre">
+      <%- Business.random_services(55).each do |bs| -%>
+        <%= link_to bs[:tag], public_businesses_category_path(bs[:business].category, tag: bs[:tag].strip), class: 'btn btn-xs btn-primary' -%>
+
+        <%#- if bs[:business].category == Business::CATEGORIES[1] -%> <!-- eating & drink -->
+          <%#= link_to bs[:tag], public_businesses_category_path(Business::CATEGORIES[1], tag: bs[:tag].strip), class: 'btn btn-xs btn-primary' -%>
+        <%#- elsif bs[:business].category == Business::CATEGORIES[0] -%> <!-- shopping and others -->
+        <%#- else -%>
+          <%#= link_to bs[:tag], public_businesses_category_path(Business::CATEGORIES[0], tag: bs[:tag].strip), class: 'btn btn-xs btn-primary' -%>
+        <%#- end -%>
+      <%- end -%>
+    </div>
+    <p class="find">
+      Can't find what you are looking for or have a query? Contact The Big Heart of Merthyr Tydfil on 01685 726272.
+    </p>
+  </div>
+
+  <div class="col-lg-4">
+    <%= render partial: 'shared/sidebar_socials' -%>
+  </div>
+</div>
+</div> <!-- /container -->

@@ -1,0 +1,6 @@
+<%- if @subscriber.errors.any? -%>
+  $('#subscribe_1 #manual').html("<%=j render partial: 'subscribers/manual', locals: { object: @subscriber } -%>");
+  $("a[href='#subscribe_1']").click();
+<%- else -%>
+  $("a[href='#subscribe_2']").click();
+<%- end -%>

@@ -1,0 +1,90 @@
+<div class="row animated fadeInRight">
+  <div class="col-sm-12">
+    <div class="panel">
+      <div class="panel-content">
+        <div class="row">
+          <div class="col-md-12">
+            <%= simple_form_for @deal, html: { class: 'form-horizontal'}, defaults: { input_html: { class: 'form-control' }} do |f| %>
+              <div class="form-group">
+                <label for="title" class="col-sm-3 control-label">Title<span class="require">*</span></label>
+                <div class="col-sm-6">
+                  <%= f.input :title, label: false %>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="business_id" class="col-sm-3 control-label">Business Id</label>
+                <div class="col-sm-6">
+                  <%= f.input :business_id, collection: current_user.businesses.asc(:name), include_blank: false, selected: business_id, label: false -%>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="description" class="col-sm-3 control-label">Description</label>
+                <div class="col-sm-6">
+                  <%= f.input :description, as: :text, input_html: { class: 'my_tinymce' }, label: false -%>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="terms" class="col-sm-3 control-label">Terms</label>
+                <div class="col-sm-6">
+                  <%= f.input :terms, as: :text, input_html: { rows: 5 }, label: false %>
+                </div>
+              </div>
+              <%- if @deal.image.present? -%>
+                <div class="form-group">
+                  <label class="col-sm-3 control-label"></label>
+                  <div class="col-sm-6">
+                    <%= image_tag @deal.image_url(:admin_thumb) -%>
+                  </div>
+                </div>
+                <div class='form-group'>
+                  <label class="col-lg-2 control-label" for="deal_remove_image"></label>
+                  <div class="col-lg-10">
+                    <div class="checkbox">
+                      <input type="checkbox" id="deal_remove_image" name="deal[remove_image]" class="boolean optional" value="1" />
+                      <label for="deal_remove_image">Remove image</label>
+                    </div>
+                  </div>
+                </div>
+              <% end %>  
+              <div class="form-group">
+                <label for="image" class="col-sm-3 control-label">Image</label>
+                <div class="col-sm-6">
+                  <%= f.input :image, label: false -%>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-3 control-label"></label>
+                <div class="col-sm-6">
+                  <%- default_date = Date.today -%>
+                </div>                
+              </div>
+              <div class="form-group">
+                <label for="start_date" class="col-sm-3 control-label">Start Date</label>
+                <div class="col-sm-6">
+                  <%= f.input :start_date, input_html: { class: 'datepicker', value: (f.object.start_date || default_date).strftime("%d-%m-%Y") }, label: false %>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="end_date" class="col-sm-3 control-label">End Dates</label>
+                <div class="col-sm-6">
+                  <%= f.input :end_date, input_html: { class: 'datepicker', value: (f.object.end_date || default_date).strftime("%d-%m-%Y") }, label: false %>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="status" class="col-sm-3 control-label">Status<span class="require">*</span></label>
+                <div class="col-sm-6">
+                  <%= f.input :status, collection: Deal::STATUSES, include_blank: false, label: false %>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-9">
+                  <%= f.button :submit, class: 'btn-primary' %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

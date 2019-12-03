@@ -1,0 +1,115 @@
+<%= content_for :bread_crumbs do -%>
+  <div class="dow margin_bottom_20">
+    <div class="col-lg-8 content">
+      <div class="bread_crumbs">
+        <%= link_to 'Home', front_path -%> >
+        <%= link_to 'Vouchers', public_vouchers_path -%> >
+        <%= @deal.title -%>
+      </div>
+      <h1 class="red title_post"><%= @deal.title -%></h1>
+      <div class="post_entry_meta">
+        <div class="category underline">
+          At <a href="<%= public_business_path(@deal.business) -%>"><%= @deal.business_name -%></a>, <%= @deal.business.full_address -%>
+          <br />
+          <div>
+            Expiry date:
+            <a href="#"><%= @deal.end_date.strftime("%B #{@deal.end_date.day.ordinalize}, %Y") -%></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+    </div>
+    <div class="clearfix"></div>
+  </div>
+<%- end -%>
+
+<div class="col-lg-8 content">
+  <div class="blog">
+        <div class="row">
+          <div class="col-xs-12 col-sm-8 col-md-8 col-lg-6 ">
+            <%=raw @deal.description -%>
+
+            <h2 class="red">Terms and Conditions</h2>
+
+            <%= @deal.terms -%>
+
+            <br />
+            <br />
+
+            <!-- <div class="a_center">
+              <a href="#subscribe_1" class="btn btn-lg btn-success margin_top_10 fancybox">Claim Voucher</a>
+              <a href="#subscribe_2" class="fancybox hide"></a>
+            </div> -->
+          </div >
+
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-6 a_center">
+            <%- if @deal.image_url(:thumb).present? -%>
+              <div class="thumbnail">
+                <%= image_tag @deal.image_url(:thumb) -%>
+              </div>
+            <%- else -%>
+              <div class="thumbnail">
+                <div style="width:358px;height:273px;background-color:#ccc"></div>
+              </div>
+            <%- end -%>
+          </div>
+        </div>
+        <div class="social_shared">
+          <span class='st_twitter_vcount' displayText='Tweet'></span>
+          <span class='st_facebook_vcount' displayText='Facebook'></span>
+          <span class='st_googleplus_vcount' displayText='Google +'></span>
+          <span class='st_email_vcount' displayText='Email'></span>
+        </div>
+  </div>
+</div>
+
+<div class="col-lg-4 sidebar">
+  <div class="widget">
+    <h2 class="red">Recent Vouchers</h2>
+    <div class="widget_recent_posts widget_recent_vouchers">
+      <%- Deal.latest(5).reject { |d| d.id == @deal.id }.each do |d| -%>
+        <div class="recent_post">
+          <a href="#" class="title"> <%= d.title -%> </a>
+          <div class="recent_posts_entry_meta ">
+              > Expires: <a href="#"><%= d.end_date.strftime("%B #{d.end_date.day.ordinalize}, %Y") -%></a>
+          </div>
+        </div>
+      <%- end -%>
+    </div>
+  </div>
+  <div class="widget">
+    <%= render partial: 'shared/sidebar_socials' -%>
+  </div>
+</div>
+
+<div id="subscribe_1" style="display:none">
+  <div class='col-lg-12'>
+    <div class='col-lg-12' id="manual">
+      <%= render partial: 'subscribers/manual', locals: { object: Subscriber.new(deal_id: @deal.id) } -%>
+    </div>
+    <hr/>
+    <div class='col-lg-12'>
+      <div class="control-group form-group">
+        <div class="control-label col-lg-2">&nbsp;</div>
+          <%= link_to '#', id: 'subscribe_with_facebook', class: 'btn btn-s btn-dark_blue' do -%>
+            <span class="glyphicon icon-facebook-sign"></span>
+            Claim with Facebook
+          <%- end -%>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="subscribe_2" style="display:none">
+  <%= link_to 'Print/Display voucher', public_voucher_path(@deal, format: 'pdf'), target: 'blank', class: 'btn btn-primary' -%>
+</div>
+
+<%- if params[:step].to_i == 2 -%>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $("a[href='#subscribe_2']").click();
+    });
+  </script>
+<%- end -%>

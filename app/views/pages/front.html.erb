@@ -1,0 +1,98 @@
+<!--div id="hero-slider" class="owl-carousel">
+	<div class="item">
+		<div class="overlay"></div>
+		<div class="slide-image">
+      <%#= image_tag 'front/placeholder-1.jpg' %>
+		</div>
+		<div class="banner-content">
+			<div class="content-wrap">
+				<div class="row content-padding">
+					<div class="columns text-center">
+						<h1>We've only just begun</h1>
+						<p>We love merthyr is back for another 5 years!</p>
+						<a href="/about.html" class="button secondary large wider">Learm More</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div-->
+
+<div id="hero-slider" class="owl-carousel">
+  <%- Slider.ordered.visible.each do |slider| -%>
+    <div class="item">
+      <div class="overlay"></div>
+      <div class="slide-image">
+        <%#= image_tag 'front/placeholder-1.jpg' %>
+        <%= image_tag slider.image.url %>
+      </div>
+      <div class="banner-content">
+        <% if slider.header.present? or slider.caption.present? %>
+          <div class="content-wrap">
+            <div class="row content-padding">
+              <div class="columns text-center">
+                <%- if slider.header.present? -%>
+                  <h1><%= slider.header -%></h1>
+                <%- end -%>
+                <%- if slider.caption.present? -%>
+                  <p><%= slider.caption -%></p>
+                <%- end -%>
+                <%- if slider.url.present? -%>
+                  <a href="<%= slider.url %>" class="button secondary large wider"><%= slider.button_title.blank? ? 'More Details' : slider.button_title %></a>
+                <%- end -%>
+              </div>
+            </div>
+          </div>
+        <%- end -%>
+      </div>
+    </div>
+  <%- end -%>
+</div>
+
+<section class="cool-gray-4-bg">
+	<div class="row content-padding">
+		<a href="https://merthyrgiftcard.com"><%= image_tag 'front/giftcard.jpg' %></a>
+	</div>
+	<div class="row content-padding small-up-1 medium-up-3" data-equalizer data-equalize-on="medium">
+		<div class="columns">
+			<div class="latest tertiary">
+				<h2 class="card-title">Latest News</h2>
+				<div class="card-content" data-equalizer-watch>
+					<%= render partial: '/pages/news_item', collection: Post.latest(4) %>
+				</div>
+					<a href="<%= blog_path %>" class="card-button">More News</a>
+			</div>
+		</div>
+		<div class="columns">
+			<div class="latest primary">
+				<h2 class="card-title">Upcoming Events</h2>
+				<div class="card-content" data-equalizer-watch>
+					<%= render partial: '/pages/event_item', collection: Event.upcoming(4) %>
+				</div>
+				<a href="<%= public_events_path %>" class="card-button">More Events</a>
+			</div>
+		</div>
+		<div class="columns">
+			<div class="latest secondary">
+				<h2 class="card-title">Latest Deals</h2>
+				<div class="card-content" data-equalizer-watch>
+          <%= render partial: '/pages/deal_item', collection: Deal.all.shuffle.first(4) %>
+				</div>
+				<a href="<%= public_vouchers_path %>" class="card-button">More Deals</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section>
+	<div class="row content-padding">
+		<div class="column">
+			<h2>Things that you can find in Merthyr Tydfil Town Centre</h2>
+			<div class="tag-cloud">
+         <%- Business.random_services(55).each do |bs| -%>
+          <%= link_to bs[:tag], public_businesses_category_path(bs[:business].category, tag: bs[:tag].strip), class: 'tag-item' -%>
+         <%- end -%>
+			</div>
+		</div>
+	</div>
+</section>

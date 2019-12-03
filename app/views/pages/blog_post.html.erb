@@ -1,0 +1,47 @@
+<section class="single-listing light-gray-bg content-padding">
+  <div class="row">
+    <div class="column">
+      <ul class="breadcrumbs">
+        <li><a href="/"><i class="fa fa-home"></i></a></li>
+        <li class="show-for-medium"><a href="<%= blog_path %>"><span>News</span></a></li>
+        <li><a href="<%= blog_post_path(@post) %>"><span><%= @post.title %></span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 medium-12 columns">
+      <div class="single-content-wrap">
+        <%- if @post.image.present? -%>
+          <div class="single-content-feature">
+             <%= image_tag @post.image_url("#{@post.image_mode}_big_thumb".to_sym) -%>
+          </div>
+        <%- end -%>
+        <div class="single-content">
+          <h3><%= @post.title -%></h3>
+          <div class="post-meta">
+            <div class="post-meta-item">
+              <div class="icon">
+                <i class="fa fa-clock-o"></i>
+              </div>
+              <div class="text">
+                <p><%= @post.published_at.strftime("%B %d %Y") -%></p>
+              </div>
+            </div>
+            <div class="post-meta-item">
+              <div class="icon">
+                <i class="fa fa-tag"></i>
+              </div>
+              <div class="text">
+                <p><%= link_to @post.category, '#' -%></p>
+              </div>
+            </div>
+          </div>
+          <%=raw @post.body -%>
+          <hr>
+          Share this business: 
+          <div class="sharethis-inline-share-buttons"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

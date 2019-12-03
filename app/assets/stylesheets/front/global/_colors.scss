@@ -1,0 +1,56 @@
+$tertiary-color: #93C83D;
+$quadary-color: #F3C913;
+
+$cool-gray-1: #485253;
+$cool-gray-2: #7C8183;
+$cool-gray-3: #D3D3D3;
+$cool-gray-4: #F4F4F4;
+
+.primary{
+	color: $primary-color;
+}
+.secondary{
+	color: $secondary-color;
+}
+.tertiary{
+	color: $tertiary-color;
+}
+.quadary-color{
+	color: $quadary-color;
+}
+.white{
+	color: $white;
+}
+.primary-bg{
+	background-color: $primary-color !important;
+}
+.secondary-bg{
+	background-color: $secondary-color !important;
+}
+.tertiary-bg{
+	background-color: $tertiary-color !important;
+}
+.quadary-bg{
+	background-color: $quadary-color !important;
+}
+.light-gray-bg{
+	background-color: $light-gray !important;
+}
+.medium-gray-bg{
+	background-color: $medium-gray !important;
+}
+.dark-gray-bg{
+	background-color: $dark-gray !important;
+}
+.cool-gray-1-bg{
+	background-color: $cool-gray-1 !important;
+}
+.cool-gray-2-bg{
+	background-color: $cool-gray-2 !important;
+}
+.cool-gray-3-bg{
+	background-color: $cool-gray-3 !important;
+}
+.cool-gray-4-bg{
+	background-color: $cool-gray-4 !important;
+}

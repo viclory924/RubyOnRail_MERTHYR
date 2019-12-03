@@ -1,0 +1,24 @@
+<div class="card-wrap">
+  <div class="card primary">
+    <a href="<%= public_event_path(event) %>" class="card-image">
+      <div class="overlay primary">
+        <div class="link-icon"><i class="fa fa-link"></i></div>
+      </div>
+      <%= image_tag event.image_url(:f_small) -%>
+    </a>
+    <div class="card-content">
+      <a href="<%= public_event_path(event) %>"><h3 class="card-title event"><%= event.name -%></h3></a>
+      <div class="post-meta">
+        <div class="post-meta-item">
+          <div class="icon"><i class="fa fa-clock-o"></i></div>
+          <div class="text"><p><%= render_date(event) %></p></div>
+        </div>
+        <div class="post-meta-item">
+          <div class="icon"><i class="fa fa-map-marker"></i></div>
+          <div class="text"><p><%= event.location_name -%></p></div>
+        </div>
+      </div>
+    </div>
+    <a href="<%= public_event_path(event) %>" class="card-link">View Event</a>
+  </div>
+</div>

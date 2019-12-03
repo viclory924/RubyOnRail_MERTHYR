@@ -1,0 +1,27 @@
+<p id="notice" class="alert alert-success"><%= notice %></p>
+
+<p>
+  <b>Category:</b>
+  <%= @business_category_template.category %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%= @business_category_template.body %>
+</p>
+
+<p>
+  <b>Images:</b>
+  <br />
+    <%- count = 0 -%>
+    <%- @business_category_template.business_category_template_images.try(:each_with_index) do |i| -%>
+      <%- next if i.image.blank? -%>
+      <%= image_tag i.image_url(:admin_thumb) %>
+      <%= "<br /><br />".html_safe if count.odd? -%>
+      <%- count += 1 -%>
+    <%- end -%>
+</p>
+
+
+<%= link_to 'Edit', edit_business_category_template_path(@business_category_template) %> |
+<%= link_to 'Back', business_category_templates_path %>

@@ -1,0 +1,66 @@
+<div class="row animated fadeInRight">
+  <div class="col-sm-12">
+    <div class="panel">
+      <div class="panel-content">
+        <div class="row">
+          <div class="col-md-12">
+
+
+
+
+
+            <%= simple_form_for @business_category_template, html: { class: 'form-horizontal'}, defaults: { input_html: { class: 'form-control' }} do |f| %>
+
+
+            <div class="form-group">
+              <label for="category" class="col-sm-3 control-label">Category<span class="require">*</span></label>
+              <div class="col-sm-6">
+                <%= f.input :category, collection: Business::CATEGORIES, include_blank: false, prompt: 'Please select' %>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="body" class="col-sm-3 control-label">Body<span class="require">*</span></label>
+              <div class="col-sm-6">
+                <%= f.input :body, as: :text, input_html: { class: 'my_tinymce' } -%>
+              </div>
+            </div> 
+
+            <div class="form-group">
+              <label for="images" class="col-sm-3 control-label">Images<span class="require">*</span></label>
+              <div class="col-sm-6">
+                <%= f.fields_for :business_category_template_images do |fa| -%>
+                <%- if fa.object.persisted? && fa.object.image.present? -%>
+                <div class="form-group">
+                  <label class="col-lg-2 control-label"></label>
+                  <div class="col-lg-10">
+                    <%= image_tag fa.object.image_url(:admin_thumb) -%>
+                  </div>
+                </div>
+                <%= fa.input :remove_image, as: :boolean, inline_label: 'Remove image', label: "&nbsp;" -%>
+                <%- elsif fa.object.new_record? -%>
+                <%= fa.input :image, input_html: { class: 'form-control' } -%>
+                <%- end -%>
+                <%- end -%>
+              </div>
+            </div>   
+
+
+
+
+            <div class="form-group">
+              <div class="col-lg-10 col-lg-offset-2">
+                <%= f.button :submit, class: 'btn-primary' %>
+              </div>
+            </div>
+            
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

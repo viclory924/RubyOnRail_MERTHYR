@@ -1,0 +1,152 @@
+form#new_subscriber{
+	padding: 1.875rem;
+	background-color: $white;
+	border-radius: 0.1875rem;
+	overflow: hidden;
+	@include box-shadow(0 0 16px rgba(0, 0, 0, 0.25));
+	.row{
+		&:last-child{
+			.column, .columns{
+				*{
+					margin-bottom: 1.875rem;
+				}
+				&:last-child{
+					>*{
+						margin-bottom: 0;
+					}
+				}
+			}
+		}
+	}
+	@include inputs(){
+		height: 3.125rem;
+		margin: 0 0 1.875rem 0;
+	}
+	textarea{
+		margin: 0 0 1.875rem 0 !important;
+	}
+	.card-options{
+		margin: 0 0 1.875rem 0;
+		padding: 1rem;
+		border: 1px solid $medium-gray;
+		border-radius: 0.1875rem;
+	}
+}
+
+.radio-group{
+	max-width: 100%;
+	margin: 0 0 1rem 0;
+	display: flex;
+	position: relative;
+	&:last-child{
+		margin: 0;
+	}
+	input[type=radio].radio-group-input{
+		width: 1.25rem;
+		height: 1.25rem;
+		margin: 0;
+		padding: 0;
+		vertical-align: top;
+		display: block;
+		cursor: pointer;
+		position: relative;
+		opacity: 0;
+		z-index: 6;
+	}
+	input[type=radio]:checked ~ .check{
+		&:before{
+			background-color: $primary-color;
+		}
+	}
+	.radio-group-label{
+		margin-top: 0.1875rem;
+		padding: 0 0 0 1.6875rem;
+		font-size: 0.875rem;
+		flex: auto;
+	}
+	.check{
+		width: 1.25rem;
+		height: 1.25rem;
+		border: 1px solid $light-gray;
+		border-radius: 100%;
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 5;
+		@include transition(border .25s linear);
+		&:before{
+			content: '';
+			width: 12px;
+			height: 12px;
+			margin: auto;
+			border-radius: 100%;
+			display: block;
+			position: absolute;
+			top: 0.1875rem;
+			left: 0.1875rem;
+			@include transition(background .25s linear);
+		}
+		&:hover{
+			border: 1px solid $primary-color;
+			@include box-shadow(0 0 8px rgba(0, 0, 0, 0.1));
+		}
+	}
+}
+
+.checkbox-group{
+	max-width: 100%;
+	margin: 0 0 1.875rem 0;
+	display: flex;
+	position: relative;
+	input[type=checkbox].checkbox-group-input{
+		width: 100%;
+		min-width: 50px;
+		max-width: 50px;
+		height: 100%;
+		min-height: 50px;
+		margin: 0;
+		padding: 0;
+		vertical-align: top;
+		display: block;
+		cursor: pointer;
+		position: absolute;
+		opacity: 0;
+		z-index: 6;
+	}
+	input[type=checkbox]:checked ~ .check{
+		background-image: image-url('front/tick.svg');
+		background-position: center;
+	}
+	.checkbox-group-label{
+		height: 100%;
+		margin: 0 0 0 3.125rem;
+		padding: 0.9375rem 0.75rem;
+		font-size: 0.875rem;
+		border: 1px solid $medium-gray;
+		border-radius: 0 0.1875rem 0.1875rem 0;
+		flex: auto;
+		position: relative;
+		left: -1px;
+	}
+	.check{
+		width: 3.125rem;
+		height: 100%;
+		text-align: center;
+		line-height: 3.125rem;
+		border: 1px solid $medium-gray;
+		border-radius: 0.1875rem 0 0 0.1875rem;
+		background: url('') center no-repeat;
+		background-size: 50%;
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 5;
+		@include transition(border .25s linear);
+		&:hover{
+			border: 1px solid $primary-color;
+			@include box-shadow(0 0 8px rgba(0, 0, 0, 0.1));
+		}
+	}
+}

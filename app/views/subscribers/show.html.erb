@@ -1,0 +1,56 @@
+<div class="content">
+  <!-- content HEADER -->
+  <!-- ========================================================= -->
+  <div class="content-header">
+    <!-- leftside content header -->
+    <div class="leftside-content-header">
+      <ul class="breadcrumbs">
+        <li><i class="fa fa-columns" aria-hidden="true"></i><a href="#">Subscribers</a></li>
+        <li><a>Show</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="row animated fadeInRight">
+    <div class="col-sm-12">
+      <% unless notice.blank? %>
+        <p id="notice" class="alert alert-success"><%= notice %></p>
+      <% end %>
+      <div class="panel">
+        <div class="panel-content">
+          <div class="table-responsive">
+            <p>
+              <b>First Name:</b>
+              <%= @subscriber.first_name %>
+            </p>
+            <p>
+              <b>Last Name:</b>
+              <%= @subscriber.last_name %>
+            </p>
+            <p>
+              <b>Email:</b>
+              <%= @subscriber.email %>
+            </p>
+            <p>
+              <b>Mobile:</b>
+              <%= @subscriber.mobile %>
+            </p>
+            <p>
+              <b>Address:</b>
+              <%= @subscriber.address %>
+            </p>
+            <p>
+              <b>Postcode:</b>
+              <%= @subscriber.postcode %>
+            </p>
+            <p>
+              <b>Deal:</b>
+              <%= @subscriber.deal.title %>
+            </p>
+            <%= link_to 'Edit', edit_subscriber_path(@subscriber) %> |
+            <%= link_to 'Back', subscribers_path %>
+          </div>
+        </div>
+      </div>
+    </div> 
+  </div> 
+</div>
